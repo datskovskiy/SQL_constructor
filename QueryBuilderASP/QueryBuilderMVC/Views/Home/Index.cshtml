@@ -1,0 +1,246 @@
+﻿@{
+    ViewBag.Title = Resources.Resource.IndexTitle;
+}
+
+
+
+
+<link rel="stylesheet" type="text/css" href="../../Content/parallax-slider/parallax-slider.css" />
+<link rel="stylesheet" type="text/css" href="../../Content/parallax-slider/flexslider.css" />
+<script type="text/javascript" src="~/Scripts/modernizr.custom.28468.js"></script>
+
+
+
+
+<!-- Sequence Modern Slider -->
+<div id="da-slider" class="da-slider">
+
+    <div class="da-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>
+                        <i>@Resources.Resource.IndexTextErModel</i>
+                        <br>
+                        <i>@Resources.Resource.IndexTextYOUR</i>
+                        <br>
+                        <i>@Resources.Resource.IndexTextDATABASE</i>
+                    </h2>
+                    <p>
+                        <i>@Resources.Resource.IndexTextAboutErModel1 </i>
+                        <br />
+                        <i>@Resources.Resource.IndexTextAboutErModel2</i>
+                    </p>
+                    @Html.ActionLink(Resources.Resource.IndexStartFREE, "List", "Workflow", new { area = "" }, new { @class = "btn btn-info btn-lg da-link" })
+                    <div class="da-img">
+                        <img src="../../Images/parallax-slider/images/2.png" alt="image01" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="da-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>
+                        <i>@Resources.Resource.IndexTextEXPORTDATA</i>
+                        <br />
+                        <i>@Resources.Resource.IndexTextToPDF</i>
+                        <br />
+                        <i>@Resources.Resource.IndexTextAndExcel</i>
+                    </h2>
+                    <p>
+                        <i>@Resources.Resource.IndexTextAboutExportData1</i>
+                        <br />
+                        <i>@Resources.Resource.IndexTextAboutExportData2</i>
+                    </p>
+                    @Html.ActionLink(Resources.Resource.IndexStartFREE, "List", "Workflow", new { area = "" }, new { @class = "btn btn-info btn-lg da-link" })
+                    <div class="da-img">
+                        <img src="../../Images/parallax-slider/images/3.png" alt="image01" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="da-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>
+                        <i>@Resources.Resource.IndexTextShared</i>
+                        </br>
+                        <i>@Resources.Resource.IndexTextProject</i>
+                       
+                    </h2>
+                    <p>
+                        <i>@Resources.Resource.IndexTextAboutShared1</i>
+                        <br />
+                        <i>@Resources.Resource.IndexTextAboutShared2</i>
+                        <br />
+                        <i>@Resources.Resource.IndexTextAboutShared3</i>
+                    </p>
+                    @Html.ActionLink(Resources.Resource.IndexStartFREE, "List", "Workflow", new { area = "" }, new { @class = "btn btn-info btn-lg da-link" })
+                    <div class="da-img">
+                        <img src="../../Images/parallax-slider/images/1.png" alt="image01" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="da-arrows">
+        <span class="da-arrows-prev">
+        </span>
+        <span class="da-arrows-next">
+        </span>
+    </nav>
+</div>
+
+
+
+
+<script src="~/Scripts/jquery-1.8.3.min.js">
+</script>
+
+<script type="text/javascript" src="~/Scripts/jquery.cslider.js"></script>
+
+
+
+
+<script type="text/javascript" src="~/Scripts/jquery.cslider.js">
+</script>
+<script type="text/javascript">
+    $(function () {
+
+        $('#da-slider').cslider({
+            autoplay: true,
+            bgincrement: 100
+        });
+
+    });
+</script>
+
+
+
+<div class="container">
+    <div class="row mar-b-50">
+        <div class="col-md-12">
+            <div class="text-center feature-head wow fadeInDown">
+                <h1 class="">
+                    @Resources.Resource.IndexTextWelcome
+                </h1>
+
+            </div>
+
+
+            <div class="feature-box">
+                <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
+                    <div class="feature-box-heading">
+                        <em>
+                            <img src="~/Images/tag.png" alt="Quick start" width="100" height="100">
+
+                        </em>
+                        <h4>
+                            <b>@Resources.Resource.IndexTextGettingStarted</b>
+                        </h4>
+                    </div>
+                    <p class="text-center">
+                        @Resources.Resource.IndexTextGettinStartedText
+                    </p>
+                    @Html.ActionLink(Resources.Resource.IndexTextMore, "NoRegistration", "Features", new { area = "" }, new { @class = "btn btn-default" })
+
+
+                </div>
+                <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
+                    <div class="feature-box-heading">
+                        <em>
+                            <img src="~/Images/quickoffice32.png" alt="Build query" width="100" height="100">
+                        </em>
+                        <h4>
+                            <b>@Resources.Resource.IndexTextBuildQuery</b>
+                        </h4>
+                    </div>
+                    <p class="text-center">
+                        @Resources.Resource.IndexTextBuildQueryText
+                    </p>
+                    @Html.ActionLink(Resources.Resource.IndexTextMore, "BuildQuery", "Features", new { area = "" }, new { @class = "btn btn-default" })
+
+                </div>
+                <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
+                    <div class="feature-box-heading">
+                        <em>
+                            <img src="~/Images/analytics16.png" alt="ER-model your database" width="100" height="100">
+                        </em>
+                        <h4>
+                            <b>@Resources.Resource.IndexTextER </b>
+                        </h4>
+                    </div>
+                    <p class="text-center">
+                        @Resources.Resource.IndexTextERText
+                    </p>
+                    @Html.ActionLink(Resources.Resource.IndexTextMore, "ER_Model", "Features", new { area = "" }, new { @class = "btn btn-default" })
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
+                <div class="feature-box-heading">
+                    <em>
+                        <img src="~/Images/acrobat.png" alt="Export data" width="100" height="100">
+
+                    </em>
+                    <h4>
+                        <b>@Resources.Resource.IndexTextExportDataSmall</b>
+                    </h4>
+                </div>
+                <p class="text-center">
+                    @Resources.Resource.IndexTextExportDataText
+                </p>
+                @Html.ActionLink(Resources.Resource.IndexTextMore, "ExportData", "Features", new { area = "" }, new { @class = "btn btn-default" })
+
+            </div>
+            <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
+                <div class="feature-box-heading">
+                    <em>
+                        <img src="~/Images/groups16.png" alt="Shared project" width="100" height="100">
+                    </em>
+                    <h4>
+                        <b>@Resources.Resource.IndexTextSharedProject </b>
+                    </h4>
+                </div>
+                <p class="text-center">
+                    @Resources.Resource.IndexTextSharedProjectText
+                </p>
+                @Html.ActionLink(Resources.Resource.IndexTextMore, "SharedProject", "Features", new { area = "" }, new { @class = "btn btn-default" })
+            </div>
+            <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
+                <div class="feature-box-heading">
+                    <em>
+                        <img src="~/Images/compute.png" alt="Queries" width="100" height="100">
+                    </em>
+                    <h4>
+                        <b>@Resources.Resource.IndexTextQueries</b>
+                    </h4>
+                </div>
+                <p class="text-center">
+                    @Resources.Resource.IndexTextQueriesText
+                </p>
+                @Html.ActionLink(Resources.Resource.IndexTextMore, "TypesQuery", "Features", new { area = "" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+
+
+        <!--feature end-->
+    </div>
+</div>
+
+
+
+
+
+

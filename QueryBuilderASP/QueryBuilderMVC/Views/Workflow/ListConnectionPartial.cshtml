@@ -1,0 +1,100 @@
+﻿@model QueryBuilderMVC.Models.ProjectViewModel
+
+
+
+@if (Model.IdCurrentProject != 0 && Model.ConnectionDbs!=null)
+{
+	foreach (var item in Model.ConnectionDbs)
+	{
+
+        <div style="width:100%; border-bottom: solid 1px gray; height: 30px;">
+            @if (Request.IsAuthenticated)
+            {
+                <div class="ItemNameConnection">
+                    @Html.ActionLink(@item.ConnectionName, "UpdateConnectionPartial", "Workflow", new { id = item.ConnectionID },
+                                new
+                                {
+                                    @class = "LinkEdit",
+                                    data_dialog_title = "Update connection"
+                                })
+                </div>
+
+                <div>
+                    @Html.ActionLink(" ", "DeleteConnectionPartial", "Workflow", new { id = item.ConnectionID },
+                            new
+                            {
+                                @class = "DeleteConnectionItem iconHeaderDeleteItem",
+                                data_dialog_title = "Delete connection"
+                            })
+                </div>
+                                <div class="">
+                                    @Html.ActionLink(" ", "UpdateConnectionPartial", "Workflow", new { id = item.ConnectionID },
+                                        new
+                                        {
+                                            @class = "UpdateConnectionItem",
+                                            data_dialog_title = "Update connection"
+                                        })
+                                </div>
+            }
+            else
+            {
+                <div class="ItemNameConnection">
+                    @item.ConnectionName
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink(" ", "ERModel", "Builder", new { id = item.ConnectionID },
+                                        new
+                                        {
+                                            @class = "ERModel",
+                                            data_dialog_title = "ER-Model",
+                                            target = "_blank"
+                                        })
+            </div>
+        </div>
+        <br />
+
+    }
+}
+
+<script>
+
+
+    $(document).ready(function () {
+        $(function () {
+
+           
+
+            $(".UpdateConnection")
+                .prepend("<span class='iconHeaderEdit iconHeader portlet-3'></span>");
+
+            $(".UpdateConnectionItem")
+                .prepend("<span class='iconHeaderEditItem iconHeader portlet-3'></span>");
+
+            $(".DeleteConnection")
+                .prepend("<span class='iconHeaderDelete iconHeader portlet-2'></span>");
+            $(".DeleteConnectionItem")
+                .prepend("<span class='iconHeaderDeleteItem iconHeader portlet-2'></span>");
+            $(".CreateConnection")
+                .prepend("<span class='iconHeaderCreate iconHeader portlet-2'></span>");
+
+            $(".ERModel")
+                .prepend("<span class='iconHeaderERModelItem iconHeader portlet-2'></span>");
+
+            $(".portlet-toggle").click(function () {
+                var icon = $(this);
+                icon.toggleClass("ui-icon-minusthick ui-icon-plusthick");
+                icon.closest(".portlet").find(".portlet-content").toggle();
+            });
+        });
+        $.ajaxSetup({ cache: false });
+        //CRUD connection
+        ModalPostDialogDeleteWithNotifyAndUpdate(".DeleteConnectionItem", '@Url.Action("DeleteConnectionPartial", "Workflow")', '@Url.Action("ListConnectionPartial", "Workflow")', UpdateConnectionList);
+        ModalPostDialogUpdateWithNotifyAndUpdate(".UpdateConnectionItem", '@Url.Action("UpdateConnectionPartial", "Workflow")', '@Url.Action("ListConnectionPartial", "Workflow")', UpdateConnectionList);
+        ModalPostDialogUpdateWithNotifyAndUpdate(".LinkEdit", '@Url.Action("UpdateConnectionPartial", "Workflow")', '@Url.Action("ListConnectionPartial", "Workflow")', UpdateConnectionList);
+       
+
+    });
+
+</script>

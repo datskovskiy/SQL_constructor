@@ -1,0 +1,25 @@
+﻿@model QueryBuilderMVC.Models.ProjectViewModel
+
+
+<h5>@Resources.Resource.DeleteProjectQuestion</h5>
+<div>
+    <p>Id: @Html.DisplayFor(m => m.IdCurrentProject)</p>
+    <p>@Resources.Resource.CreateProjectName @Html.DisplayFor(m => m.Name)</p>
+    <p>@Resources.Resource.CreateProjectDescription @Html.DisplayFor(m => m.Description)</p>
+  
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <p class="TextField" style="display:none;">Name project: @Html.TextBoxFor(x => x.IdCurrentProject, new { placeholder = Model.IdCurrentProject }) </p>
+        <p class="TextField" style="display:none;">Name project: @Html.TextBoxFor(x => x.Name, new { placeholder = Model.Name }) </p>
+        <p class="TextField" style="display:none;">Name project: @Html.TextBoxFor(x => x.Description, new { placeholder = Model.Description }) </p>
+
+        @*<input type="submit" value="Delete" />*@
+    }
+</div>
+
+<script>
+        $('.ui-dialog-buttonset button').addClass("ui-button ui-corner-all ui-widget button-modal");
+        $('.ui-dialog-buttonset button').css('width', 70);
+        $('.ui-dialog-buttonset button').css('height', 30);
+</script>

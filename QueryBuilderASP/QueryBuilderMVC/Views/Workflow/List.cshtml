@@ -1,0 +1,312 @@
+﻿@model QueryBuilderMVC.Models.ProjectViewModel
+@using ActiveDatabaseSoftware.ActiveQueryBuilder.Web.Mvc.UI
+@using ActiveDatabaseSoftware.ActiveQueryBuilder.Web.Mvc.UI
+
+
+
+<script src="~/Scripts/jquery.jqGrid.min.js" type="text/javascript"></script>
+<script src="~/Scripts/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+<script src="~/Scripts/WorkflowList.js"></script>
+
+@{
+	Layout = "~/Views/Shared/_Workflow.cshtml";
+}
+
+<div style="padding-top: 20px; ">
+
+	<div class="column column_left col-xs-12 col-lg-2 col-md-2 col-sm-2" style="padding-left: 5px; padding-right: 2px; " \>
+
+		<div class="portlet" id="id_1">
+			<div class="portlet-header ">
+				<div style="width:100%; height: 30px;">
+					@if (Request.IsAuthenticated)
+					{
+						@ViewBag.name
+					}
+					else
+					{
+						<span>@Model.Name</span>
+					}
+
+
+					@* IF user autorized and choose current project show buttons for delete and edit project *@
+
+					@if ((Model.IdCurrentProject != 0) && (Request.IsAuthenticated))
+					{
+						<div>
+
+							@Html.ActionLink(" ", "DeleteProjectPartial", "Workflow", new { id = Model.IdCurrentProject },
+						new
+						{
+							@class = "viewDialogDelete IconModalDelete2",
+							data_dialog_title = "Delete project"
+						})
+						</div>
+						<div>
+							@Html.ActionLink(" ", "UpdateProjectPartial", "Workflow", new { id = Model.IdCurrentProject },
+						new
+						{
+							@class = "viewDialogEdit IconModalEdit2",
+							data_dialog_title = "Edit project"
+						})
+						</div>
+
+					}
+
+				</div>
+
+			</div>
+			<div class="portlet-content" id="ContainerListHistory">
+
+				<div class="">
+					@if (!Request.IsAuthenticated)
+					{
+						<p>@Model.Description</p>
+					}
+					<p>@ViewBag.desk</p>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="portlet " id="id_2">
+			<div class="portlet-header">
+
+				<div style="display:inline-block;" class="ContainerForConnections">
+					<div class="MyConnections">@Resources.Resource.ListMyConnection</div>
+					@if ((Model.IdCurrentProject != 0) && (Request.IsAuthenticated))
+					{
+						<div>
+							@if (ViewBag.ConnectionName == "ConnectionName")
+							{
+
+								<div>
+									@Html.ActionLink(" ", "CreateConnectionPartial", "Workflow", new { id = Model.IdCurrentProject },
+							new
+							{
+								@class = "CreateConnection",
+								data_dialog_title = "Create connection"
+							})
+								</div>
+							}
+							else
+							{
+								@Html.ActionLink(" ", "CreateConnectionPartial", "Workflow", new { id = Model.IdCurrentProject, count = ViewBag.Count },
+									new
+									{
+										@class = "CreateConnection",
+										data_dialog_title = "Create connection"
+									})
+							}
+						</div>
+					}
+				</div>
+
+			</div>
+			<div class="portlet-content" id="ContainerListConnection">
+				<div id="ListConnection">
+					@Html.Partial("ListConnectionPartial")
+				</div>
+			</div>
+		</div>
+
+		<div class="portlet" id="id_4">
+
+			<div class="portlet-header">@Resources.Resource.ListQuery</div>
+			<div class="portlet-content">
+
+				<div class="IconQuery">
+					@if (Request.IsAuthenticated)
+					{
+						@Html.ActionLink(" ", "SendQuery", "Workflow", new { query = "00" },
+							new
+							{
+								@id = "buttonSend",
+								@class = "SendQuery",
+								data_dialog_title = "Send query"
+							})
+
+						<div id="SaveQuery">
+							@using (Html.BeginForm("SaveQuery", "Workflow", FormMethod.Post))
+							{
+								<input type="text" name="query" class="sqlQuery" style="display: none;" />
+								<button class="SaveQuery"></button>
+							}
+						</div>
+
+
+						@Html.ActionLink(" ", "CreateQueryPartial", "Workflow", new { id = Model.IdCurrentProject },
+							new
+							{
+								@class = "CreateQuery",
+								data_dialog_title = "Create query"
+							})
+					}
+					<a href="Javascript:void(0);" id="ExecuteQuery" class="GetResult"></a>
+
+				</div>
+				<div>
+					@Html.ActiveQueryBuilder().SqlEditor().GetHtml()
+				</div>
+			</div>
+		</div>
+
+
+		@if (Request.IsAuthenticated)
+		{
+			<div class="portlet" id="id_5">
+				<div class="portlet-header">Queries</div>
+				<div class="portlet-content" id="ContainerListQuery">
+					<div id="ListQuery">
+						@if (Model.IdCurrentProject != 0)
+						{
+							@Html.Partial("ListQueryPartial");
+						}
+					</div>
+				</div>
+			</div>
+		}
+
+		@if (Request.IsAuthenticated)
+		{
+			<div class="portlet" id="id_6">
+
+				<div class="portlet-header">History</div>
+				<div class="portlet-content" id="ContainerHistory">
+					<div id="ListHistory">
+						@Html.Partial("ListHistoryPartial")
+					</div>
+				</div>
+			</div>
+		}
+
+	</div>
+	<div class="col-xs-12 col-lg-10 col-md-10 col-sm-10" style="padding-left: 0px; padding-right: 2px; ">
+
+		<div class="nonSortable">
+			<div class="portlet-header">@Resources.Resource.ListQueryBuilder</div>
+			<div id="QueryBuilder" class="portlet-content">
+
+				@if (Model.IdCurrentProject != 0 && Model.ConnectionDbs!=null)
+				{
+                    @Html.Partial("QueryBuilderPartial")
+
+					
+				}
+			</div>
+		</div>
+		<div class="nonSortable">
+			<div class="portlet-header">@Resources.Resource.ListQuerySettings</div>
+			<div class="portlet-content">
+				@Html.ActiveQueryBuilder().Grid(settings =>
+		   {
+			   settings.OrColumnCount = 1;
+		   }).GetHtml()
+			</div>
+		</div>
+
+		<div class="nonSortable">
+			<div class="portlet-header">@Resources.Resource.ListResultQuery</div>
+			<div class="portlet-content">
+				<div class="Tools-panel">
+
+				</div>
+				@if (Request.IsAuthenticated)
+				{
+					<div class="IconGrid">
+						<div id="SavePDF">
+							@using (Html.BeginForm("SaveGridToPdf", "Workflow", FormMethod.Post))
+							{
+								<input type="text" name="query" class="sqlQueryForSaveToFile" style="display: none;" />
+								<button class="SavePDF"></button>
+							}
+						</div>
+
+						<div id="SaveExcel">
+							@using (Html.BeginForm("SaveGridToExcel", "Workflow", FormMethod.Post))
+							{
+								<input type="text" name="query" class="sqlQueryForSaveToFile" style="display: none;" />
+								<button class="SaveExcel"></button>
+							}
+						</div>
+
+						@Html.ActionLink(" ", "SendResultQuery", "Workflow",
+					new
+					{
+						@id = "SendResultQuery",
+						@class = "SendResultQuery",
+						data_dialog_title = "Send result query"
+					})
+
+					</div>
+				}
+				@Html.Partial("DataGridPartial")
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<script>
+	
+
+	$(document).ready(function () {
+
+
+		$.ajaxSetup({ cache: false });
+
+		$("#ExecuteQuery").click(function () {
+			LoadGrid(@Model.IdCurrentProject, "@Url.Action("GetGridModel")","@Url.Action("GetData")","@Url.Action("ListHistoryPartial", "Workflow")","@User.Identity.IsAuthenticated.ToString().ToLower()");
+		});
+		$(".SaveQuery").click(function() {
+			var s = formatQueryString();
+			$(".sqlQuery").val(s);
+
+		});
+
+		$(".SendQuery").hover(function(){
+			var s = formatQueryString();
+			$("#buttonSend").attr("href", "/Workflow/SendQuery?query="+s) ;
+
+		});
+
+		SetGetWindow(@Model.IdCurrentProject);
+
+		ModalPostDialogSend(".SendQuery", '@Url.Action("SendQueryPartial", "Workflow")');
+		ModalPostDialogSend(".SendResultQuery", '@Url.Action("SendResultQueryPartial", "Workflow")');
+
+		///Modal edit for edit Project
+		ModalPostDialogDeleteWithNotifyAndUpdate(".IconModalDelete2", '@Url.Action("DeleteProjectPartial", "Workflow")', '@Url.Action("ListConnectionPartial", "Workflow")', UpdateConnectionList);
+		ModalPostDialogUpdateWithNotifyAndUpdate(".IconModalEdit2", '@Url.Action("UpdateProjectPartial", "Workflow")', '@Url.Action("ListConnectionPartial", "Workflow")', UpdateConnectionList);
+
+		///Modal create Connection
+		ModalPostDialogCreateWithNotifyAndUpdate(".CreateConnection", '@Url.Action("CreateConnectionPartial", "Workflow")', '@Url.Action("ListConnectionPartial", "Workflow")',UpdateConnectionList);
+
+		ModalPostDialogCreateWithNotifyAndUpdate(".CreateQuery", '@Url.Action("CreateQueryPartial", "Workflow")', '@Url.Action("ListQueryPartial", "Workflow")',UpdateQueryList);
+
+		$(function () {
+			$(".portlet-toggle").click(function () {
+				var icon = $(this);
+				icon.toggleClass("ui-icon-minusthick ui-icon-plusthick");
+				icon.closest(".portlet").find(".portlet-content").toggle();
+			});
+		});
+
+
+
+		$(".close").on("click", function (e) {
+			e.preventDefault();
+			$(this).closest(".dialog").dialog("close");
+		});
+
+		$("#emailResultQueryForm").validate();
+		$("#emailQueryForm").validate();
+	});
+
+</script>

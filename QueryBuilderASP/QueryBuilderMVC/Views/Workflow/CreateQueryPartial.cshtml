@@ -1,0 +1,45 @@
+﻿@model QueryBuilderMVC.Models.QueryViewModel
+
+@using (Html.BeginForm())
+{
+	@Html.ValidationSummary();
+
+	<div>
+        <p class="TextField" style="color:black;">
+            Name: @Html.EditorFor(x => x.QueryName)
+            </p>
+	</div>
+    <div>
+        <p class="TextField" style="color:black; display:none">
+            Database: @Html.EditorFor(x => x.ProjectID,
+       new { placeholder = Model.ProjectID })
+
+        </p>
+    </div>
+    <div>
+        <p class="TextField" style="color:black;">
+            Description: @Html.EditorFor(x => x.Description)
+        </p>
+    </div>
+    <div>
+       
+        <p class="TextField" style="color:black;display:none">
+            Database: @Html.TextBoxFor(x => x.QueryBody)
+        </p>
+    </div>
+}
+
+    <textarea id="textquery" class="prettyprint " style="width:230px; height:200px; margin-left:10px;" >
+
+    </textarea>
+
+<script>
+    var s = formatQueryString();
+
+        $("#QueryBody").val(s);
+        $("#textquery").append(s);
+        $('.ui-dialog-buttonset button').addClass("ui-button ui-corner-all ui-widget button-modal");
+        $('.ui-dialog-buttonset button').css('width', 70);
+        $('.ui-dialog-buttonset button').css('height', 30);
+        //prettyPrint();
+</script>

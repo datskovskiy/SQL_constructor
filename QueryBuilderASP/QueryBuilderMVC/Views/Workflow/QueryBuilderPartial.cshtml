@@ -1,0 +1,113 @@
+﻿@using ActiveDatabaseSoftware.ActiveQueryBuilder
+@using System.Data.SqlClient
+@using ActiveDatabaseSoftware.ActiveQueryBuilder.Web.Mvc.UI
+@using ActiveDatabaseSoftware.ActiveQueryBuilder.Web.Server
+@using ActiveDatabaseSoftware.ActiveQueryBuilder.Web.Mvc.UI
+@model QueryBuilderMVC.Models.ProjectViewModel
+@using QueryBuilder.Utils.Encryption
+@using QueryBuilder.Utils.DBSchema
+
+
+@Html.ActiveQueryBuilder(settings =>
+{
+	settings.HttpCompressionEnabled = false;
+	settings.PersistentConnection = false;
+	//settings.DisablePageReload = true;
+	//settings.DisableSessionKeeper = true;
+	settings.Language = "auto";
+	settings.UseCustomLanguageFiles = false;
+	settings.CustomLanguagePath = "~/Language Files/";
+
+	settings.Init += (sender, e) =>
+	{
+
+
+		// ===========================================================
+		// a) you can load metadata from the database connection using live database connection
+		//var connection = new SqlConnection { ConnectionString = "Data Source = .; Initial catalog= QueryBuilder; Integrated Security = True" };
+		//var connection = new SqlConnection { ConnectionString = "Data source= .; Initial catalog= QueryBuilder; UID= sa; Password= vjzbuhf;" };
+		var connectionList = new List<SqlConnection>();
+
+		foreach (var item in Model.ConnectionDbs)
+		{
+			string connectString = String.Format("Data source= {0}; Initial catalog= {1}; UID= {2}; Password= {3};",
+			item.ServerName, item.DatabaseName, item.LoginDB, Rijndael.DecryptStringFromBytes(item.PasswordDB));
+			connectionList.Add(new SqlConnection { ConnectionString = connectString });
+		}
+		var sessionStoreItem = sender as SessionStoreItem;
+		var queryBuilder = sessionStoreItem.QueryBuilder;
+		//queryBuilder.MetadataContainer.Clear();
+		//var queryBuilder = new QueryBuilder();
+		// create an instance of the proper syntax provider for your database server.
+		// - use AutoSyntaxProvider if you want to detect your database server automatically
+		//   (autodetection works in case of live database connection only);
+		// - use ANSI or Universal syntax provider only if you can't find the right syntax
+		//   provider for your database server.
+		queryBuilder.SyntaxProvider = new MSSQLSyntaxProvider();
+		//queryBuilder.MetadataProvider = new MSSQLMetadataProvider();
+		queryBuilder.MetadataStructureOptions.GroupBySchemas = false;
+		queryBuilder.OfflineMode = true;
+
+		queryBuilder.MetadataContainer.XML = CustomMetadataProvider.GetMetadata(connectionList.ToArray());
+		queryBuilder.MetadataContainer.LoadAll(true);
+		//queryBuilder.InitializeDatabaseSchemaTree();
+
+		
+
+
+
+		// call the RefreshMetadata to load metadata from a database connection
+		queryBuilder.MetadataStructure.Refresh();
+		//queryBuilder.Refresh();
+		// ===========================================================
+		// b) or you can load metadata from the pre-generated XML file
+		//
+		//queryBuilder.MetadataContainer.ImportFromXML(Server.MapPath("~/Views/Northwind.xml"));
+		//queryBuilder.MetadataStructure.Refresh();
+	};
+}).GetHtml()
+<div id="all">
+    <div id="content-container">
+        <div id="qb-ui">
+            <div id="tree">
+                @Html.ActiveQueryBuilder().ObjectTree(settings =>
+                                   {
+
+                                       settings.ShowFields = false;
+                                       settings.ShowDescriptons = false;
+                                       settings.SortingType = ObjectsSortingType.None;
+                                       settings.VisiblePaginationLinksCount = 6;
+                                       settings.ItemsPerPage = 24;
+                                       settings.PreloadedPagesCount = 5;
+                                       settings.ShowAllItemInGroupingSelectLists = true;
+
+                                   }).GetHtml()
+            </div>
+            <div id="center">
+                @Html.ActiveQueryBuilder().SubQueryNavigationBar(settings =>
+                                           {
+                                               settings.UnionNavBarVisible = true;
+                                           }).GetHtml()
+
+                @Html.ActiveQueryBuilder().Canvas(settings =>
+                                           {
+                                               settings.AllowLinkManipulations = ActiveDatabaseSoftware.ActiveQueryBuilder.Web.Server.Models.LinkManipulations.Allow;
+                                               settings.DefaultDatasourceWidth = "auto";
+                                               settings.DisableDatasourcePropertiesDialog = false;
+                                               settings.DisableLinkPropertiesDialog = false;
+                                               settings.DisableQueryPropertiesDialog = false;
+                                               settings.MaxDefaultDatasourceHeight = "144";
+                                           }).GetHtml()
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+	$(document).ready(function () {
+		FixTreeView();
+	});
+	
+</script>

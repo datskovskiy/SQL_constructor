@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- For more information on using Web.config transformation visit http://go.microsoft.com/fwlink/?LinkId=301874 -->
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+  </configSections>
+  <!--
+    In the example below, the "SetAttributes" transform will change the value of
+    "connectionString" to use "ReleaseSQLServer" only when the "Match" locator
+    finds an attribute "name" that has a value of "MyDB".
+
+    <connectionStrings>
+      <add name="MyDB"
+        connectionString="Data Source=ReleaseSQLServer;Initial Catalog=MyReleaseDB;Integrated Security=True"
+        xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
+    </connectionStrings>
+  -->
+   <!--<connectionStrings>
+      <add name="QueryBuilderDB" 
+           connectionString="Data Source=(local);
+           Initial Catalog=SqlConstructor;
+           Integrated Security=True;
+           Pooling=False;" 
+           providerName="System.Data.SqlClient"/>
+    </connectionStrings>-->
+  <connectionStrings>
+        <!--<add name="DefaultConnection" connectionString="Server=tcp:e7g8mfm8ri.database.windows.net,1433;Database=querybuilder;User ID=scrumtracker01@e7g8mfm8ri;Password=Instance@1;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" providerName="System.Data.SqlClient" />-->
+    <add name="DefaultConnection" connectionString="Data Source=(local);Initial Catalog=QueryBuilder;Integrated Security=true; App=EntityFramework" providerName="System.Data.SqlClient" />
+  <add name="TestConnection" connectionString="Data Source=(local);Initial Catalog=University;Integrated Security=true; App=EntityFramework" providerName="System.Data.SqlClient" />
+
+  </connectionStrings>
+  <system.web>
+    <!--
+      In the example below, the "Replace" transform will replace the entire
+      <customErrors> section of your Web.config file.
+      Note that because there is only one customErrors section under the
+      <system.web> node, there is no need to use the "xdt:Locator" attribute.
+
+      <customErrors defaultRedirect="GenericError.htm"
+        mode="RemoteOnly" xdt:Transform="Replace">
+        <error statusCode="500" redirect="InternalError.htm"/>
+      </customErrors>
+    -->
+    <compilation debug="true">
+      <assemblies>
+        <add assembly="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" />
+        
+      </assemblies>
+    </compilation>
+    <httpHandlers>
+      <add path="handlers/exchange.axd" verb="*" type="ActiveDatabaseSoftware.ActiveQueryBuilder.Web.Server.Handlers.Exchange, ActiveDatabaseSoftware.ActiveQueryBuilder2.Web.Server" />
+    </httpHandlers>
+    <httpModules>
+      <add name="ActiveQueryBuilderHttpModule" type="ActiveDatabaseSoftware.ActiveQueryBuilder.Web.Server.HttpModule, ActiveDatabaseSoftware.ActiveQueryBuilder2.Web.Server" />
+    </httpModules>
+  </system.web>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin.Security.OAuth" publicKeyToken="31BF3856AD364E35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin.Security.Cookies" publicKeyToken="31BF3856AD364E35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin.Security" publicKeyToken="31BF3856AD364E35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30AD4FE6B2A6AEED" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="WebGrease" publicKeyToken="31BF3856AD364E35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.5.2.14234" newVersion="1.5.2.14234" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin" publicKeyToken="31BF3856AD364E35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.5.2.14234" newVersion="1.5.2.14234" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin.Security.OAuth" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin.Security" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin.Security.Cookies" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Razor" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages.Razor" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+   <system.net>
+    <mailSettings>
+      <smtp from="m2.altexsoftlab@gmail.com">
+        <network host="smtp.gmail.com" port="587" enableSsl="true" userName="m2.altexsoftlab@gmail.com" password="AltexSoftLab_M2" />
+      </smtp>
+    </mailSettings>
+  </system.net>
+   <system.webServer>
+      <validation validateIntegratedModeConfiguration="false" />
+      <handlers>
+         <add name="handlers/exchange.axd_*" preCondition="integratedMode" path="handlers/exchange.axd" verb="*" type="ActiveDatabaseSoftware.ActiveQueryBuilder.Web.Server.Handlers.Exchange, ActiveDatabaseSoftware.ActiveQueryBuilder2.Web.Server" />
+      </handlers>
+      <modules>
+         <remove name="Session" />
+         <add name="Session" type="System.Web.SessionState.SessionStateModule" preCondition="managedHandler" />
+         <add name="ActiveQueryBuilderHttpModule" type="ActiveDatabaseSoftware.ActiveQueryBuilder.Web.Server.HttpModule, ActiveDatabaseSoftware.ActiveQueryBuilder2.Web.Server" />
+      </modules>
+   </system.webServer>
+</configuration>

@@ -1,0 +1,221 @@
+﻿@using Microsoft.AspNet.Identity
+@using ActiveDatabaseSoftware.ActiveQueryBuilder.Web.Mvc.UI
+
+
+<!DOCTYPE html>
+
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/Scripts/js")*@
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="~/Content/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/demo.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/component.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/base/jquery.ui.theme.css" />
+    <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+
+
+    <script src="~/Scripts/modernizr.custom.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="~/Content/Workflow.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/base/jquery-ui.css" />
+
+    @Html.ActiveQueryBuilder().GetScripts(settings =>
+{
+    settings.LoadJQuery = true;
+    settings.Path = "~/Scripts/QueryBuilder/";
+})
+
+
+
+
+
+</head>
+<body>
+    <div id="notify">
+        <div class="alert alert-success">Success<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button></div>
+    </div>
+    <script>$("#notify").hide();</script>
+    <div class="container">
+       
+
+        <ul id="gn-menu" class="gn-menu-main ui-tabs-nav ui-helper-clearfix ui-widget-header" style="z-index:9000;">
+            <li class="gn-trigger">
+                <a class="gn-icon gn-icon-menu" id="WorkflowMenu"><span>Menu</span></a>
+                <nav class="gn-menu-wrapper">
+                    <div class="gn-scroller">
+                        <ul class="gn-menu">
+                            <li>
+                                <ul class="gn-submenu" style="border-top: 1px solid #c6d0da;"></ul>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <div class="IconMenuAdd ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons" 
+                                         title="@Resources.Resource.WorkflowNewProject">
+                                        @Html.ActionLink(Resources.Resource.WorkflowNewProject, "CreateProjectPartial", "Workflow",
+                    new
+                    {
+                        @class = "CreateNewProject",
+                        @id = "IconMenuAdd",
+                        data_dialog_title = "Create new project"
+                    })
+                                    </div>
+                                }
+
+                                <div id="proj"></div>
+
+                            </li>
+                        </ul>
+                    </div><!-- /gn-scroller -->
+                </nav>
+            </li>
+            <li class="codrops-icon dropdown ">
+                <ul id="LangWorkflow">
+                    <li class="containerLanguage" title="@Resources.Resource.LanguageEnglish">
+                        @Html.ActionLink(" ", "ChangeCulture", "Home", new { lang = "en" }, new
+                   {
+                       @class = "IconLanguage EN",
+                   })
+                    </li>
+                    <li class="containerLanguage" title="@Resources.Resource.LanguageUkrainian">
+                        @Html.ActionLink(" ", "ChangeCulture", "Home", new { lang = "de" }, new
+                   {
+                       @class = "IconLanguage UA",
+                   })
+                    </li>
+                    <li class="containerLanguage" title="@Resources.Resource.LanguageRussian">
+                        @Html.ActionLink(" ", "ChangeCulture", "Home", new { lang = "ru" }, new
+                   {
+                       @class = "IconLanguage RU",
+                   })
+                    </li>
+
+                </ul>
+
+
+
+            </li>
+            <li class="codrops-icon dropdown TopRightMenu" id="userMenu">
+                <a class="dropdown-toggle" id="User" data-toggle="dropdown" href="#" aria-expanded="false">
+                </a>
+
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <div class="SettingsUser" >
+                                @Html.ActionLink(Resources.Resource.WorkflowSettingAccount, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            </div>
+                        }
+
+                    </li>
+
+                    <li>
+                        <div class="LogOutUser">
+                            @if (Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink(Resources.Resource.WorkflowLogOff, "LogOff", "Account");
+
+                            }
+                            else
+                            {
+                                <ul class="LogOutUser">
+                                    <li>@Html.ActionLink(Resources.Resource.WorkflowRegister, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                    <li>@*@Html.ActionLink(Resources.Resource.WorkflowLogIn, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })*@</li>
+                                   <li>
+                                       @Html.ActionLink(Resources.Resource.WorkflowLogIn, "Login", "Account", routeValues: null, htmlAttributes: new
+                                  {
+                                      id = "LoginLink",
+                                      data_dialog_title = "Login"
+                                  })
+                                   </li>
+                                  </ul>
+                            }
+                        </div>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li class="codrops-icon dropdown " id="NotificationMenu">
+                @Html.Partial("_NotificationUserPartial")
+            </li>
+        </ul>
+
+
+
+        @*<header>
+
+            </header>*@
+
+    </div><!-- /container -->
+    <div class="container-fluid ">
+        @RenderBody()
+       
+
+
+    </div>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Workflow.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/classie.js"></script>
+    <script src="~/Scripts/gnmenu.js"></script>
+
+    <script>
+        new gnMenu(document.getElementById('gn-menu'));
+    </script>
+
+
+    <script>
+		function FixTreeView() {
+			QB.Web.Application.reconnect();
+			QB.Web.Application.reconnect();
+		}
+
+        $(function () {
+            $(document).tooltip();
+        });
+
+        $(document).ready(function () {
+
+            $.ajaxSetup({ cache: false });
+
+            ModalPostDialogCreateWithNotifyAndUpdate(".CreateNewProject", '@Url.Action("CreateProjectPartial", "Workflow")', '@Url.Action("ListProjectPartial", "Workflow")', UpdateProjectList);
+            UpdateProjectClick();
+
+            function UpdateProjectClick() {
+                $("#WorkflowMenu").hover(function () {
+                    UpdateProjectList('@Url.Action("ListProjectPartial", "Workflow")');
+                });
+
+            };
+                      
+            $(".portlet-toggle").click(function () {
+                var icon = $(this);
+                icon.toggleClass("ui-icon-minusthick ui-icon-plusthick");
+                icon.closest(".portlet").find(".portlet-content").toggle();
+            });
+
+
+            $(".close").on("click", function (e) {
+                e.preventDefault();
+                $(this).closest(".dialog").dialog("close");
+            });
+        });
+
+        
+        ModalPostDialogSend("#LoginLink", '@Url.Action("Login", "Account")');
+
+    </script>
+
+</body>
+</html>

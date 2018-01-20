@@ -1,0 +1,40 @@
+﻿/*
+    This styles for HOME controller
+    
+*/
+
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+        color: #797979;
+}
+.fadeInUp
+{
+    margin-bottom: 30px;
+}
+a.btn-default
+{
+    border: none;
+    background:#c0c0c0;
+}
+
+a.btn-default:hover
+{
+    background: #2E83FF;
+    color: #fff;
+}
+
+.footer-small {
+    background-color: #2C3E50;
+    margin-top: -6px;
+    padding-top: 5px;
+}
+
+.social-link-footer li {
+    float: right;
+    margin: 5px 10px 5px 0px;
+    padding-bottom: 5px;
+}
+
+

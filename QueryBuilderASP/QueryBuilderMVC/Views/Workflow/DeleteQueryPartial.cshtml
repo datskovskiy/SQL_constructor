@@ -1,0 +1,26 @@
+﻿@model QueryBuilderMVC.Models.QueryViewModel
+
+
+<h5 style="font-size:17px;"><b>@Resources.Resource.DeleteQueryQuestion</b></h5>
+<div>
+	<p><b>@Resources.Resource.CreateQueryName:</b> @Html.DisplayFor(m => m.QueryName)</p>
+	<p><b>@Resources.Resource.CreateQueryBody:</b> @Html.DisplayFor(m => m.QueryBody)</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <p class="TextField" style="display:none;">@Html.TextBoxFor(x => x.QueryID, new { placeholder = Model.QueryID }) </p>
+        <p class="TextField" style="display:none;">@Html.TextBoxFor(x => x.UserID, new { placeholder = Model.UserID }) </p>
+        <p class="TextField" style="display:none;">@Html.TextBoxFor(x => x.ProjectID, new { placeholder = Model.ProjectID }) </p>
+		<p class="TextField" style="display:none;">@Html.TextBoxFor(x => x.QueryName, new { placeholder = Model.QueryName }) </p>
+		<p class="TextField" style="display:none;">@Html.TextBoxFor(x => x.QueryBody, new { placeholder = Model.QueryBody }) </p>
+		<p class="TextField" style="display:none;">@Html.TextBoxFor(x => x.QueryDate, new { placeholder = Model.QueryDate }) </p>
+
+        @*<input type="submit" value="Delete" />*@
+    }
+</div>
+
+<script>
+        $('.ui-dialog-buttonset button').addClass("ui-button ui-corner-all ui-widget button-modal");
+        $('.ui-dialog-buttonset button').css('width', 70);
+        $('.ui-dialog-buttonset button').css('height', 30);
+</script>

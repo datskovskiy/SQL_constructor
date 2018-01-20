@@ -1,0 +1,90 @@
+﻿@model QueryBuilderMVC.Models.ConnectionViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary();
+
+    <div>
+        @Html.LabelFor(model => model.ConnectionName)
+        <div>
+            @Html.EditorFor(x => x.ConnectionName)
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(model => model.ServerName)
+        @if (Model.ConnectionCount > 0)
+        {
+            <div>
+                @Html.TextBoxFor(x => x.ServerName, new { disabled = "disabled", placehoder = Model.ServerName })
+                <p class="TextField" style="display:none;">
+                    @Resources.Resource.CreateConnectionDatabase @Html.TextBoxFor(x => x.ServerName,
+                    new { placeholder = Model.ServerName })
+                </p>
+            </div>
+        }
+        else
+        {
+            <div>
+                @Html.EditorFor(x => x.ServerName)
+            </div>
+        }
+       
+    </div>
+    <div>
+        @if (Model.ConnectionCount > 0)
+        {
+            <div>
+                @*@Html.TextBoxFor(x => x.LoginDB, new { disabled = "disabled", placehoder = Model.LoginDB })*@
+                <p class="TextField" style="display:none;">
+                    @Resources.Resource.CreateConnectionDatabase @Html.TextBoxFor(x => x.LoginDB,
+       new { placeholder = Model.LoginDB })
+                </p>
+            </div>
+        }
+        else
+        {
+            @Html.LabelFor(model => model.LoginDB)
+
+        <div>
+
+            @Html.EditorFor(x => x.LoginDB)
+        </div>
+        }
+    </div>
+    <div>
+@if (Model.ConnectionCount > 0)
+{
+    <div>
+        @*@Html.TextBoxFor(x => x.PasswordDB, new { disabled = "disabled", placehoder = Model.PasswordDB })*@
+        <p class="TextField" style="display:none;">
+            Database: @Html.TextBoxFor(x => x.PasswordDB,
+       new { placeholder = Model.PasswordDB })
+        </p>
+    </div>
+}
+else
+{
+    @Html.LabelFor(model => model.PasswordDB)
+
+        <div>
+            @Html.EditorFor(x => x.PasswordDB)
+        </div>
+        }
+    </div>
+    <div>
+        @Html.LabelFor(model => model.DatabaseName)
+        <div>
+            @Html.EditorFor(x => x.DatabaseName)
+        </div>
+    </div>
+    <p class="TextField" style="color:black; display:none;">
+        Database: @Html.TextBoxFor(x => x.ConnectionOwner,
+       new { placeholder = Model.ConnectionOwner })
+    </p>
+    
+}
+<script>
+        $('.ui-dialog-buttonset button').addClass("ui-button ui-corner-all ui-widget button-modal");
+        $('.ui-dialog-buttonset button').css('width', 70);
+        $('.ui-dialog-buttonset button').css('height', 30);
+</script>

@@ -1,0 +1,474 @@
+﻿<Window x:Class="Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:v="clr-namespace:System;assembly=mscorlib"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Wpf.ViewModel"
+		 xmlns:enums="clr-namespace:BuilderBL.SQLDesigner.Enums;assembly=BuilderBL"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"   
+        Icon="/View/Styles/WindowStyle/MainIcon.ico"
+            Style="{StaticResource WindowStyle}"
+    Title="MainWindow" MinHeight="350" MinWidth="350"
+    WindowState="Maximized" ShowInTaskbar="True" Height="820" Width="1023" >
+
+    <Window.DataContext>
+        <local:MainWindowFormViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+		<ObjectDataProvider x:Key="Aggregate" MethodName="GetValues" ObjectType="{x:Type v:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type Type="enums:Aggregate"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		<ObjectDataProvider x:Key="Sort" MethodName="GetValues" ObjectType="{x:Type v:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type Type="enums:Sort"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+
+		<Style x:Key="ChangeIconLogOut" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Template" Value="{StaticResource LogOutIconBlue}"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template" Value="{StaticResource LogOutIcon}"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Template" Value="{StaticResource LogOutIconRed}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ChangeIconUserSettings" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Template" Value="{StaticResource UserSettingsIcon}"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template" Value="{StaticResource UserSettingsIconGreen}"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Template" Value="{StaticResource UserSettingsIconRed}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style x:Key="ChangeIconAddUser" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Template" Value="{StaticResource UserLogInIconBarBlue}"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template" Value="{StaticResource UserLogInIconBarGreen}"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Template" Value="{StaticResource UserLogInIconBarRed}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ChangeIconListProject" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Template" Value="{StaticResource ListMyProjectIconBlue}"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template" Value="{StaticResource ListMyProjectIconGreen}"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Template" Value="{StaticResource ListMyProjectIconRed}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+       
+    </Window.Resources>
+    
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" MaxWidth="350" MinWidth="100"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="241*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="SkyBlue" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        
+        
+        
+        <DockPanel Height="18" LastChildFill="True" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="1">
+            <Menu x:Name="Mainmenu" Height="Auto" VerticalAlignment="Top">
+                <MenuItem Header="{DynamicResource File}" Name="File" >
+                    <MenuItem Header="{DynamicResource Projects}" Name="Project" >
+                        <MenuItem.Icon>
+                            <ContentControl Template="{StaticResource Project}" />
+                        </MenuItem.Icon>
+                        <MenuItem  Header="{DynamicResource CreateNewProject}" Command="{Binding ClickNewProjectCommand}">
+                            <MenuItem.Icon>
+                                <ContentControl Template="{StaticResource AddIcon}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="{DynamicResource OpenProject}" HorizontalAlignment="Left" Width="160" Command="{Binding ClickOpenProjectCommand}"
+                                  ToolTip="{DynamicResource OpenProject}">
+                            <MenuItem.Icon>
+                                <ContentControl Template="{StaticResource Open}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="{DynamicResource SaveProject}" Command="{Binding ClickSaveProjectCommand}"/>
+                        <MenuItem  Header="{DynamicResource CloseProject}" Command="{Binding ClickCloseCommand}">
+                            <MenuItem.Icon>
+                                <ContentControl Template="{StaticResource CloseIcon}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+
+                    <Separator HorizontalAlignment="Left" Height="1" Width="160"/>
+                    <MenuItem Header="{DynamicResource AddMenu}" Name="Add" >
+                        <MenuItem.Icon>
+                            <ContentControl Template="{StaticResource AddIn}" />
+                        </MenuItem.Icon>
+                        <MenuItem  Header="{DynamicResource AddConnection}" Command="{Binding ClickAddConnectionCommand}" >
+                            <MenuItem.Icon>
+                                <ContentControl Template="{StaticResource IconDatabase}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem  Header="{DynamicResource AddNewUsers}" Command="{Binding ClickAddUserInProjectCommand}" >
+                            <MenuItem.Icon>
+                                <ContentControl Template="{StaticResource AddUsersInProjectIcon}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <Separator HorizontalAlignment="Left" Height="1" Width="160"/>
+                    <MenuItem  Header="{DynamicResource SignIn}" Command="{Binding ClickAutorizationCommand}">
+                        <MenuItem.Icon>
+                            <ContentControl Template="{StaticResource UserIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem  Header="{DynamicResource LogOutUser}" Command="{Binding ClickAutorizationCommand}">
+                        <MenuItem.Icon>
+                            <ContentControl Template="{StaticResource LogOutIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem  Header="{DynamicResource Exit}" Command="{Binding ClickCloseCommand}">
+                        <MenuItem.Icon>
+                            <ContentControl Template="{StaticResource CloseIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Edit}" Name="Edit" Command="{Binding EditButton}"/>
+                <MenuItem Header="{DynamicResource View}" Name="View"/>
+
+            </Menu>
+
+        </DockPanel>
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Height="Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="579*"/>
+                <ColumnDefinition Width="173*"/>
+            </Grid.ColumnDefinitions>
+            
+            
+            <ToolBarTray Grid.ColumnSpan="2" Grid.Column="0" Width="Auto" >
+                <ToolBar Name="DatabaseToolBar" >
+                    <Button Command="{Binding ClickAddConnectionCommand}" ToolTip="{StaticResource AddConnect}">
+                        <WrapPanel Orientation="Vertical">
+                            <ContentControl Template="{StaticResource IconDatabase}" />
+                            <TextBlock Text="{DynamicResource AddConnect}" Margin="1"></TextBlock>
+                        </WrapPanel>
+                    </Button>
+                    <Button Command="{Binding ClickBuildErModelCommand}" ToolTip="{StaticResource BuildErModelToolTip}">
+                        <WrapPanel Orientation="Vertical">
+                            <ContentControl Template="{StaticResource ErModelIcon}" />
+                            <TextBlock Text="{DynamicResource BuildErModel}" Margin="1"></TextBlock>
+                        </WrapPanel>
+                    </Button>
+                </ToolBar>
+                <ToolBar Name="ToolBarProject" Header="" >
+                    <Button Command="{Binding ClickNewProjectCommand}" ToolTip="{StaticResource CreateProject}">
+                        <WrapPanel Orientation="Vertical">
+                            <ContentControl Template="{StaticResource AddIcon}" />
+                            <TextBlock Text="{DynamicResource CreateNewProject}" Margin="1"></TextBlock>
+                        </WrapPanel>
+                    </Button>
+                    <Button Command="{Binding ClickOpenProjectCommand}" ToolTip="{StaticResource OpenProject}">
+                        <WrapPanel Orientation="Vertical">
+                            <ContentControl Template="{StaticResource Open}" />
+                            <TextBlock Text="{DynamicResource OpenProject}" Margin="1"></TextBlock>
+                        </WrapPanel>
+                    </Button>
+                    <Button Command="{Binding ClickSaveProjectCommand}" ToolTip="{StaticResource SaveProject}">
+                        <WrapPanel Orientation="Vertical">
+                            <ContentControl Template="{StaticResource Saves}" />
+                            <TextBlock Text="{DynamicResource SaveProject}" Margin="1"></TextBlock>
+                        </WrapPanel>
+                    </Button>
+                    <Button Command="{Binding }" ToolTip="{StaticResource CloseProject}">
+                        <WrapPanel Orientation="Vertical">
+                            <ContentControl Template="{StaticResource CloseIcon}" />
+                            <TextBlock Text="{DynamicResource CloseProject}" Margin="1"></TextBlock>
+                        </WrapPanel>
+                    </Button>
+                    <Button Command="{Binding ClickAddUserInProjectCommand}" ToolTip="{StaticResource AddNewUsersToolTip}">
+                        <WrapPanel Orientation="Vertical">
+                            <ContentControl Template="{StaticResource AddUsersInProjectIcon}" />
+                            <TextBlock Text="{DynamicResource AddNewUsers}" Margin="1"></TextBlock>
+                        </WrapPanel>
+                    </Button>
+                </ToolBar>
+                <ToolBar Name="UserControlView"  >
+                    <WrapPanel Orientation="Horizontal">
+                        <WrapPanel Orientation="Vertical">
+                            <ContentControl x:Name="Avatar" Template="{StaticResource AvatarIcon}" Width="35">
+                            </ContentControl>
+                            <TextBlock x:Name="AvatarText" 
+                                       Text="{Binding FirstName}"
+                                       Margin="2,5,2,2" />
+                                       
+                                       
+                            
+
+                        </WrapPanel>
+                        <WrapPanel Orientation="Vertical">
+                            <Button Margin="2" Style="{StaticResource ChangeIconListProject}" >
+                            </Button>
+                            <Button Margin="2" Style="{StaticResource ChangeIconUserSettings}" >
+                            </Button>
+                        </WrapPanel>
+                        <WrapPanel Orientation="Vertical">
+                            <Button Margin="2" Style="{StaticResource ChangeIconAddUser}" Command="{Binding ClickAutorizationCommand}" >
+                            </Button>
+                            <Button Margin="2" Style="{StaticResource ChangeIconLogOut}" Command="{Binding ClickAutorizationCommand}" ToolTip="{StaticResource LogOut}">
+                            </Button>
+                         </WrapPanel>
+                    </WrapPanel>
+                    
+                </ToolBar>
+            </ToolBarTray>
+            
+        </Grid>
+        <Grid ShowGridLines="False" Grid.Row="2" Grid.Column="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" MinHeight="200" MaxHeight="400" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="127"/>
+            </Grid.RowDefinitions>
+            <GridSplitter x:Name="GridSplitterTreeWithQuerry" Height="4"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                          ShowsPreview="False" Grid.Row="2" Margin="0,1" 
+                          Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"
+                          ToolTip="Press and move for resize"/>
+            
+            <TreeView x:Name="TreeDataBase" Grid.Row="1" Margin="3" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      DataContext="{Binding}"
+                      ItemsSource="{Binding List}"
+                      >
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <EventSetter Event="MouseDoubleClick" Handler="OnItemMouseDoubleClick"/>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+
+
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type local:Group}" ItemsSource="{Binding Items}">
+                        <TextBlock Text="{Binding Path=Name}" />
+                    </HierarchicalDataTemplate>
+                    <DataTemplate DataType="{x:Type local:Entry}" >
+                        <TextBlock Text="{Binding Path=Name}" />
+                    </DataTemplate>
+                </TreeView.Resources>
+            </TreeView>
+            <ToolBarTray Grid.Row="4" Grid.Column="0" Width="Auto" >
+                <ToolBar>
+					<Button Command="{Binding ClickRunQuerryCommand}" ToolTip="{StaticResource RunQuerry}">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Template="{StaticResource TestQuerry}" />
+                        </StackPanel>
+                    </Button>
+					<Button Command="{Binding ClickRefreshQuerryCommand}" ToolTip="{StaticResource RefreshQuerry}">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Template="{StaticResource Refresh}" />
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding ClickSendQuerryToEmailCommand}" ToolTip="{StaticResource SendQuerryToMail}">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Template="{StaticResource SendMail}" />
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding ClickSavePdfCommand}" ToolTip="{StaticResource SaveResultToPdf}" >
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Template="{StaticResource Pdf}" />
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding ClickSaveExcelCommand}" ToolTip="{StaticResource SaveResultToExcel}">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Template="{StaticResource Excel}" />
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding ClickSaveTxtCommand}" ToolTip="{StaticResource SaveQuerryToTxt}">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Template="{StaticResource FileTxt}" />
+                        </StackPanel>
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
+            
+            <TextBox TextChanged="TextBoxSqlQuerry_OnTextChanged"  
+                x:Name="TextBoxSqlQuerry" 
+                Margin="3"
+                IsReadOnly="False" 
+                Grid.Row="5" 
+                     Text="{Binding Path=SqlQuerry, Mode=OneWay}"
+                
+                TextWrapping="Wrap"/>
+
+            <TextBlock 
+                x:Name="TextBoxTreeDb" 
+                TextWrapping="Wrap"
+                Text="Entities and attributes"
+                TextAlignment="Center"
+                FontSize="14"
+                FontWeight="Bold"
+                Foreground="DarkBlue"
+                Grid.Row="0" RenderTransformOrigin="0.5,0.5" Height="19">
+                <TextBlock.Background>
+                    <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1" Opacity="0.5">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FFF5F6F9" Offset="0"/>
+                        <GradientStop Color="#FF8198DC" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock 
+                x:Name="TextBlockSQLQuerry" 
+                TextWrapping="Wrap"
+                Text="SQL querry"
+                TextAlignment="Center"
+                FontSize="14"
+                FontWeight="Bold"
+                Foreground="DarkBlue"
+                Grid.Row="3" RenderTransformOrigin="0.5,0.5" Height="19" Margin="0,1">
+                <TextBlock.Background>
+                    <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1" Opacity="0.5">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FFF5F6F9" Offset="0"/>
+                        <GradientStop Color="#FF8198DC" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Background>
+            </TextBlock>
+
+        </Grid>
+        <GridSplitter x:Name="GridSplitter" 
+                  Grid.Column="1" Grid.Row="2"
+                   HorizontalAlignment="Center" VerticalAlignment="Stretch" 
+                     ShowsPreview="False" Width="6"
+                      Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"
+                      ToolTip="Press and move for resize" Margin="2,0"/>
+
+        <StatusBar Height="24" VerticalAlignment="Bottom" Width="Auto" Grid.Row="3" Grid.ColumnSpan="3" Grid.Column="0">
+            <TextBlock> Результат валидации или верификации данных</TextBlock>
+            <StatusBarItem HorizontalAlignment="Right">
+                <ResizeGrip Opacity="0.75" />
+            </StatusBarItem>
+        </StatusBar>
+        <Grid Grid.Column="2" Grid.Row="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="195*" MinHeight="100"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="147*" MinHeight="100"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="263*"/>
+                <ColumnDefinition Width="17"/>
+            </Grid.ColumnDefinitions>
+            
+            <GridSplitter x:Name="GridSplitterWithMainWorkflow" Height="4"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                          ShowsPreview="False" Grid.Row="1" Grid.ColumnSpan="2"
+                          Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"
+                          ToolTip="Press and move for resize"/>
+            
+            <ScrollBar x:Name="ScrollBar1" Grid.Column="1" Grid.Row="0" />
+            <ScrollBar x:Name="ScrollBar2" Grid.Column="1" Grid.Row="2" />
+
+            <DataGrid x:Name="DatabaseBuilder" 
+                      HorizontalAlignment="Left" VerticalAlignment="Top"
+                      Grid.Row="0" Grid.Column="0"
+                      
+                      Width="Auto" Height="Auto"
+                      ColumnWidth="*"
+					  DataContext ="{Binding}"
+					  SelectedIndex="{Binding QueryListSelectedIndexyList}"
+                      ItemsSource ="{Binding QueryList}"
+					  AutoGenerateColumns="False"
+
+                     >
+
+				<!--<DataGrid.Style>
+					<Style TargetType="{x: }"
+				</DataGrid.Style>-->
+				<DataGrid.Columns>
+
+					<DataGridTextColumn Header="Column" IsReadOnly="True" Binding="{Binding Column, Mode=OneTime}"/>
+					<DataGridTextColumn Header="Table" IsReadOnly="True" Binding="{Binding Table, Mode=OneTime}"/>
+					<DataGridTextColumn Header="Alias" Binding="{Binding Alias}"/>
+					<DataGridTextColumn Header="Output" Binding="{Binding Output}"/>
+					<DataGridComboBoxColumn Header="Sort" SelectedItemBinding="{Binding Sort, UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding Source={StaticResource Sort }}"/>
+					<DataGridComboBoxColumn Header="GroupBy" SelectedItemBinding="{Binding GroupBy, UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding Source={StaticResource Aggregate}}"/>
+					<DataGridTextColumn Header="Filter" Binding="{Binding Filter}"/>
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<StackPanel>
+									<Button Content="delete" Command="{Binding Path=DataContext.ClickDeleteRowCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+								</StackPanel>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+				</DataGrid.Columns>
+			</DataGrid>
+
+            <DataGrid x:Name="DatabaseDataGrid" 
+                      HorizontalAlignment="Left" VerticalAlignment="Top"
+                      Grid.Row="2" Grid.Column="0"
+					  ColumnWidth="*"
+                      Width="Auto" Height="Auto"
+					  DataContext ="{Binding}"
+                      ItemsSource ="{Binding ResultTable}"
+                     />
+            
+        </Grid>
+
+    </Grid>
+</Window>

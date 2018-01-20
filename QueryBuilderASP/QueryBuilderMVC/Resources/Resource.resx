@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChooseLang" xml:space="preserve">
+    <value>Choose language</value>
+  </data>
+  <data name="CreateConnectionDatabase" xml:space="preserve">
+    <value>Database Name:</value>
+  </data>
+  <data name="CreateConnectionName" xml:space="preserve">
+    <value>Connection:</value>
+  </data>
+  <data name="CreateProjectDescription" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="CreateProjectName" xml:space="preserve">
+    <value>Name project:</value>
+  </data>
+  <data name="DeleteConnectionQuestion" xml:space="preserve">
+    <value>Do you want delete this connection?</value>
+  </data>
+  <data name="DeleteProjectQuestion" xml:space="preserve">
+    <value>Do you want delete this project?</value>
+  </data>
+  <data name="IndexStartFREE" xml:space="preserve">
+    <value>Start FREE</value>
+  </data>
+  <data name="IndexTextAboutErModel1" xml:space="preserve">
+    <value>You have the opportunity to see</value>
+  </data>
+  <data name="IndexTextAboutErModel2" xml:space="preserve">
+    <value>a detailed ER-model of your database.</value>
+  </data>
+  <data name="IndexTextAboutExportData1" xml:space="preserve">
+    <value>Your data will be save to popular format</value>
+  </data>
+  <data name="IndexTextAboutExportData2" xml:space="preserve">
+    <value>files on your PC or send to e-mail.</value>
+  </data>
+  <data name="IndexTextAboutShared1" xml:space="preserve">
+    <value>You have the ability to share your project with</value>
+  </data>
+  <data name="IndexTextAboutShared2" xml:space="preserve">
+    <value>colleagues and build queries together or just give</value>
+  </data>
+  <data name="IndexTextAboutShared3" xml:space="preserve">
+    <value>someone access requests in your project.</value>
+  </data>
+  <data name="IndexTextAndExcel" xml:space="preserve">
+    <value>AND EXCEL</value>
+  </data>
+  <data name="IndexTextBuildQuery" xml:space="preserve">
+    <value>Build query</value>
+  </data>
+  <data name="IndexTextBuildQueryText" xml:space="preserve">
+    <value>The ability to build your requests only with the mouse. You do not need to know the SQL to build your query and get results. For this will be enough to use our intuitive graphical interface.</value>
+  </data>
+  <data name="IndexTextDATABASE" xml:space="preserve">
+    <value>DATABASE</value>
+  </data>
+  <data name="IndexTextER" xml:space="preserve">
+    <value>ER-model your database</value>
+  </data>
+  <data name="IndexTextErModel" xml:space="preserve">
+    <value>ER-MODEL</value>
+  </data>
+  <data name="IndexTextERText" xml:space="preserve">
+    <value>You have the opportunity to see a detailed ER-model of your database. The ER-model will help you to trace all the connections and relationships of tables, as well as the available fields.</value>
+  </data>
+  <data name="IndexTextEXPORTDATA" xml:space="preserve">
+    <value>EXPORT DATA</value>
+  </data>
+  <data name="IndexTextExportDataSmall" xml:space="preserve">
+    <value>Export data</value>
+  </data>
+  <data name="IndexTextExportDataText" xml:space="preserve">
+    <value>Opportunity to export result for your query in *.XLS and *.PDF. Your data will be save to popular format files on your PC or send to e-mail.</value>
+  </data>
+  <data name="IndexTextGettingStarted" xml:space="preserve">
+    <value>Getting started</value>
+  </data>
+  <data name="IndexTextGettinStartedText" xml:space="preserve">
+    <value>Query Builder can use without registration. For use just press "START FREE". Query Builder without registration have features such us:</value>
+  </data>
+  <data name="IndexTextMore" xml:space="preserve">
+    <value>More »</value>
+  </data>
+  <data name="IndexTextProject" xml:space="preserve">
+    <value>PROJECT</value>
+  </data>
+  <data name="IndexTextQueries" xml:space="preserve">
+    <value>Different types of queries</value>
+  </data>
+  <data name="IndexTextQueriesText" xml:space="preserve">
+    <value>The ability to build various types of queries, requests and combine to make nested queries.Complex queries are now easy to build.</value>
+  </data>
+  <data name="IndexTextShared" xml:space="preserve">
+    <value>SHARED</value>
+  </data>
+  <data name="IndexTextSharedProject" xml:space="preserve">
+    <value>Shared project</value>
+  </data>
+  <data name="IndexTextSharedProjectText" xml:space="preserve">
+    <value>You have the ability to share your project with colleagues and build queries together or just give someone access requests in your project.</value>
+  </data>
+  <data name="IndexTextToPDF" xml:space="preserve">
+    <value>to PDF</value>
+  </data>
+  <data name="IndexTextWelcome" xml:space="preserve">
+    <value>Welcome to SQLQueryBuilder</value>
+  </data>
+  <data name="IndexTextYOUR" xml:space="preserve">
+    <value>YOUR</value>
+  </data>
+  <data name="IndexTitle" xml:space="preserve">
+    <value>Home Page</value>
+    <comment>ViewBag.Title for INDEX</comment>
+  </data>
+  <data name="InviteUserTitle" xml:space="preserve">
+    <value>Users for shared</value>
+  </data>
+  <data name="LayoutAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="LayoutContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="LayoutHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="LayoutTitle" xml:space="preserve">
+    <value>- QueryBuilder</value>
+  </data>
+  <data name="ListMyConnection" xml:space="preserve">
+    <value>My connections</value>
+  </data>
+  <data name="ListQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="ListQueryBuilder" xml:space="preserve">
+    <value>QueryBuilder</value>
+  </data>
+  <data name="ListQuerySettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ListResultQuery" xml:space="preserve">
+    <value>Result query</value>
+  </data>
+  <data name="LoginPartialHello" xml:space="preserve">
+    <value>Hello</value>
+  </data>
+  <data name="ManageViewModelValidPassord" xml:space="preserve">
+    <value>The password must be at least 6 characters long.</value>
+  </data>
+  <data name="ManageViewModelValidPasswordText" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ProjectValidationMessage" xml:space="preserve">
+    <value>Please enter project name</value>
+  </data>
+  <data name="ProjectValidationMessageDescription" xml:space="preserve">
+    <value>Enter description</value>
+  </data>
+  <data name="ProjectValidationMessageDescriptionMaxLenght" xml:space="preserve">
+    <value>Limit length string for 150 symbols</value>
+  </data>
+  <data name="ProjectValidationMessageMaxLenght" xml:space="preserve">
+    <value>Limit length string for 16 letters</value>
+  </data>
+  <data name="SettingsForMenu" xml:space="preserve">
+    <value>Settings </value>
+  </data>
+  <data name="UserViewModelUser" xml:space="preserve">
+    <value>Please select user</value>
+  </data>
+  <data name="WorkflowLogIn" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="WorkflowLogOff" xml:space="preserve">
+    <value>Log Off</value>
+  </data>
+  <data name="WorkflowMenuSettings" xml:space="preserve">
+    <value>Account Settings</value>
+  </data>
+  <data name="WorkflowNewProject" xml:space="preserve">
+    <value>Create new project</value>
+  </data>
+  <data name="WorkflowRegister" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="WorkflowSettingAccount" xml:space="preserve">
+    <value>Settings account</value>
+  </data>
+  <data name="CreateQueryBody" xml:space="preserve">
+    <value>Query body </value>
+  </data>
+  <data name="CreateQueryName" xml:space="preserve">
+    <value>Query name</value>
+  </data>
+  <data name="DeleteQueryQuestion" xml:space="preserve">
+    <value>Do you want delete this query?</value>
+  </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="LanguageRussian" xml:space="preserve">
+    <value>Russian</value>
+  </data>
+  <data name="LanguageUkrainian" xml:space="preserve">
+    <value>Ukrainian</value>
+  </data>
+  <data name="TooltipCurrentProject" xml:space="preserve">
+    <value>Choose as current project</value>
+  </data>
+  <data name="TooltipDeleteProject" xml:space="preserve">
+    <value>Delete this project</value>
+  </data>
+  <data name="TooltipEditProject" xml:space="preserve">
+    <value>Edit this project</value>
+  </data>
+  <data name="TooltipInviteProject" xml:space="preserve">
+    <value>Shared this project your colleges</value>
+  </data>
+</root>

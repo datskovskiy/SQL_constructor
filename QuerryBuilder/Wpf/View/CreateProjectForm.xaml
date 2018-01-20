@@ -1,0 +1,113 @@
+﻿<Window x:Class="Wpf.View.CreateProjectForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf.ViewModel"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="{DynamicResource CreateProjectTitle}" 
+        ResizeMode="NoResize"
+        Height="400" Width="500" 
+        Icon="/View/Styles/WindowStyle/MainIcon.ico"
+            Style="{StaticResource WindowStyle}">
+    <Window.DataContext>
+        <local:CreateProjectFormViewModel/>
+    </Window.DataContext>
+    <Grid >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="SkyBlue" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="142*"/>
+            <ColumnDefinition Width="158*"/>
+            <ColumnDefinition Width="139*"/>
+            <ColumnDefinition Width="26*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="29*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="58*"/>
+            <RowDefinition Height="84*"/>
+            <RowDefinition Height="34*"/>
+        </Grid.RowDefinitions>
+
+        <StatusBar Height="24" VerticalAlignment="Bottom" Width="Auto" Grid.Row="5" Grid.ColumnSpan="5">
+            <TextBlock> Результат валидации или верификации данных</TextBlock>
+            <StatusBarItem HorizontalAlignment="Right"/>
+        </StatusBar>
+
+        <TextBlock x:Name="CreateNewProjectTextBlock" 
+        	Grid.Column="1"
+        	HorizontalAlignment="Center" VerticalAlignment="Center"
+        	TextWrapping="Wrap"
+            TextAlignment="Center"
+            Text="{DynamicResource CreateProjectTitle}"
+        	Width="220"
+        	FontSize="20"
+        	Height="28" Grid.Row="0" Margin="107,1,112,3" Grid.ColumnSpan="3"/>
+
+        <Label x:Name="NameLabel" 
+               Content="{DynamicResource NameProject}" 
+               Grid.Column="1"
+               HorizontalContentAlignment="Left"
+               HorizontalAlignment="Left"  VerticalAlignment="Center"
+               Height="26" MaxWidth="142"
+               Width="100" Margin="0,31,0,4" Grid.Row="0" Grid.RowSpan="2" />
+
+        <Label x:Name="DatabaseLabel" 
+               Content="{DynamicResource SummaryProject}" 
+               Grid.Column="1" Grid.Row="2"
+               HorizontalContentAlignment="Left"
+               HorizontalAlignment="Left"  VerticalAlignment="Top"
+               Height="26" Width="103" Margin="0,5,0,0"  />
+
+        <TextBox x:Name="NameProjectTextBox" 
+                 Grid.Column="2" Grid.Row="1"
+                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                 Height="22" TextWrapping="Wrap" 
+                 Text="{Binding Path=Name}"  Width="297" Margin="0,3,0,4" Grid.ColumnSpan="2" />
+
+        <TextBox x:Name="DatabaseTextBox" MaxLength="350"
+                 Grid.Column="2" Grid.Row="2"
+                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                 Height="101" TextWrapping="Wrap" 
+                 Text="{Binding Path=Summary}"  Width="297" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,10,0,22"/>
+
+        <Button x:Name="AddConnectButton" Content="{DynamicResource AddConnect}" 
+                Grid.Column="3" Grid.Row="4"
+                HorizontalAlignment="Center"  VerticalAlignment="Top" 
+                Width="105" Height="30" BorderBrush="{DynamicResource WindowBorderBrush}" 
+                Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" 
+                Command="{Binding AddConnectionCommand}" Margin="17,0"/>
+        <ListBox x:Name="ConnectionListBox" Grid.Column="2" Height="104"
+                 Grid.Row="4" VerticalAlignment="Top"
+                 ItemsSource="{Binding List}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label x:Name="YourConnectLabel" 
+        	Content="{DynamicResource YourConnections}" 
+        	Grid.Column="1" Grid.Row="4"
+        	HorizontalContentAlignment="Left"
+        	HorizontalAlignment="Left"  VerticalAlignment="Top"
+        	Height="26" Width="119" />
+        <Button x:Name="SaveProjectButton" Content="{DynamicResource CreateProject}" 
+        	Grid.Column="3" Grid.Row="4"
+        	HorizontalAlignment="Left"  VerticalAlignment="Center" 
+        	Width="105" Height="30" BorderBrush="{DynamicResource WindowBorderBrush}" 
+        	Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Margin="17,44,0,10"
+        	Command="{Binding CreateProjectCommand}" />
+    </Grid>
+
+</Window>

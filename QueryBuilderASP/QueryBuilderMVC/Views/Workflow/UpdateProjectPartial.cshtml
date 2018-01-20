@@ -1,0 +1,21 @@
+﻿@model QueryBuilderMVC.Models.ProjectViewModel
+
+@using (Html.BeginForm())
+{
+
+    @Html.ValidationSummary();
+   
+    <p class="TextField" style="display:none;">Name project: @Html.TextBoxFor(x => x.IdCurrentProject, new { placeholder = Model.IdCurrentProject}) </p>
+
+    <p class="TextField">@Resources.Resource.CreateProjectName @Html.TextBoxFor(x => x.Name, new { placeholder = Model.Name }) </p>
+    <p class="TextField">@Resources.Resource.CreateProjectDescription @Html.TextBoxFor(x => x.Description, new { placeholder = Model.Description })</p>
+    @*<br />
+
+    <input type="submit" name="action" value="Update project" />*@
+}
+
+<script>
+        $('.ui-dialog-buttonset button').addClass("ui-button ui-corner-all ui-widget button-modal");
+        $('.ui-dialog-buttonset button').css('width', 70);
+        $('.ui-dialog-buttonset button').css('height', 30);
+</script>

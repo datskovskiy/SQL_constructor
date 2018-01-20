@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChooseLang" xml:space="preserve">
+    <value>Вибір мови</value>
+  </data>
+  <data name="CreateConnectionDatabase" xml:space="preserve">
+    <value>Ім'я бази даних:</value>
+  </data>
+  <data name="CreateConnectionName" xml:space="preserve">
+    <value>Ім'я з'єднання:</value>
+  </data>
+  <data name="CreateProjectDescription" xml:space="preserve">
+    <value>Опис::</value>
+  </data>
+  <data name="CreateProjectName" xml:space="preserve">
+    <value>Ім'я проекта:</value>
+  </data>
+  <data name="DeleteConnectionQuestion" xml:space="preserve">
+    <value>Ви дійсно бажаєте видалити це з'єднання?</value>
+  </data>
+  <data name="DeleteProjectQuestion" xml:space="preserve">
+    <value>Ви дійсно бажаєте видалити цей проект?</value>
+  </data>
+  <data name="IndexStartFREE" xml:space="preserve">
+    <value>ПОЧАТИ</value>
+  </data>
+  <data name="IndexTextAboutErModel1" xml:space="preserve">
+    <value>Ви маєте можливість побачити</value>
+  </data>
+  <data name="IndexTextAboutErModel2" xml:space="preserve">
+    <value>деталізовану ER-модель бази даних.</value>
+  </data>
+  <data name="IndexTextAboutExportData1" xml:space="preserve">
+    <value>Ваші дані будуть збережені у розповсюджених форматах</value>
+  </data>
+  <data name="IndexTextAboutExportData2" xml:space="preserve">
+    <value>на вашему комп'ютері або відправлені електронною поштою</value>
+  </data>
+  <data name="IndexTextAboutShared1" xml:space="preserve">
+    <value>Ви маєте можливість поділитись своїм проектом з</value>
+  </data>
+  <data name="IndexTextAboutShared2" xml:space="preserve">
+    <value>колегами й почати будувати запити разом</value>
+  </data>
+  <data name="IndexTextAboutShared3" xml:space="preserve">
+    <value>або просто дати комусь доступ до проекта</value>
+  </data>
+  <data name="IndexTextAndExcel" xml:space="preserve">
+    <value>та EXCEL</value>
+  </data>
+  <data name="IndexTextBuildQuery" xml:space="preserve">
+    <value>Будуй запити</value>
+  </data>
+  <data name="IndexTextBuildQueryText" xml:space="preserve">
+    <value>Можливість створювати свої запити тільки за допомоги миші. Вам не потрібно знати SQL, для того, щоб будувати свої запити й отримувати результати. Для цього буде достатньо використовувати наш інтуітивно-зрозумілий графічний інтерфейс.</value>
+  </data>
+  <data name="IndexTextDATABASE" xml:space="preserve">
+    <value>бази даних</value>
+  </data>
+  <data name="IndexTextER" xml:space="preserve">
+    <value>ER-модель вашої бази даних</value>
+  </data>
+  <data name="IndexTextErModel" xml:space="preserve">
+    <value>ER-модель</value>
+  </data>
+  <data name="IndexTextERText" xml:space="preserve">
+    <value>У вас є можливість побачити детальну ER-модель вашої бази даних. ER-модель допоможе вам прослідкувати вам усі зв'язки й відношення таблиць, а також доступні поля.</value>
+  </data>
+  <data name="IndexTextEXPORTDATA" xml:space="preserve">
+    <value>ЕКСПОРТ ДАНИХ</value>
+  </data>
+  <data name="IndexTextExportDataSmall" xml:space="preserve">
+    <value>Експорт даних</value>
+  </data>
+  <data name="IndexTextExportDataText" xml:space="preserve">
+    <value>Можливість експортувати результат запита у * .xls або * .PDF. Ваші дані будуть збережені у розповсюдженіших форматах на комп'ютері або відправлені електронною поштою.</value>
+  </data>
+  <data name="IndexTextGettingStarted" xml:space="preserve">
+    <value>Почни зараз</value>
+  </data>
+  <data name="IndexTextGettinStartedText" xml:space="preserve">
+    <value>Query Builder можна використовувати без попередньої регістрації. Для ознайомлення з можливостями сервісу натисніть "ПОЧАТИ". Query Builder без регістрації має наступні функції:</value>
+  </data>
+  <data name="IndexTextMore" xml:space="preserve">
+    <value>Детальніше »</value>
+  </data>
+  <data name="IndexTextProject" xml:space="preserve">
+    <value>ПРОЕКТ</value>
+  </data>
+  <data name="IndexTextQueries" xml:space="preserve">
+    <value>Різні типи запитів</value>
+  </data>
+  <data name="IndexTextQueriesText" xml:space="preserve">
+    <value>Можливість створювати різні типи запитів та їх об'єднання. Вложені запити тепер будувати легко.</value>
+  </data>
+  <data name="IndexTextShared" xml:space="preserve">
+    <value>СПІЛЬНИЙ</value>
+  </data>
+  <data name="IndexTextSharedProject" xml:space="preserve">
+    <value>Спільний проект</value>
+  </data>
+  <data name="IndexTextSharedProjectText" xml:space="preserve">
+    <value>У вас є можливість поділитися свохм проектом з колегами й будуати запити разом або просто дати комусь доступ до вашого проекту.</value>
+  </data>
+  <data name="IndexTextToPDF" xml:space="preserve">
+    <value>у PDF</value>
+  </data>
+  <data name="IndexTextWelcome" xml:space="preserve">
+    <value>Раді вас вітати у QueryBuilder</value>
+  </data>
+  <data name="IndexTextYOUR" xml:space="preserve">
+    <value>вашій</value>
+  </data>
+  <data name="IndexTitle" xml:space="preserve">
+    <value>Головна</value>
+    <comment>ViewBag.Title for INDEX</comment>
+  </data>
+  <data name="InviteUserTitle" xml:space="preserve">
+    <value>Користувачі для запрошення</value>
+  </data>
+  <data name="LayoutAbout" xml:space="preserve">
+    <value>Про нас</value>
+  </data>
+  <data name="LayoutContact" xml:space="preserve">
+    <value>Контакти</value>
+  </data>
+  <data name="LayoutHome" xml:space="preserve">
+    <value>Головна</value>
+  </data>
+  <data name="LayoutTitle" xml:space="preserve">
+    <value>- QueryBuilder</value>
+  </data>
+  <data name="ListMyConnection" xml:space="preserve">
+    <value>Мої з'єднання</value>
+  </data>
+  <data name="ListQuery" xml:space="preserve">
+    <value>Запит</value>
+  </data>
+  <data name="ListQueryBuilder" xml:space="preserve">
+    <value>Будівельник запитів</value>
+  </data>
+  <data name="ListQuerySettings" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="ListResultQuery" xml:space="preserve">
+    <value>Результат запита</value>
+  </data>
+  <data name="LoginPartialHello" xml:space="preserve">
+    <value>Привіт</value>
+  </data>
+  <data name="ManageViewModelValidPassord" xml:space="preserve">
+    <value>Пароль повинен бути не менше 6 символів.</value>
+  </data>
+  <data name="ManageViewModelValidPasswordText" xml:space="preserve">
+    <value>Новий пароль</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Ім'я проекту</value>
+  </data>
+  <data name="ProjectValidationMessage" xml:space="preserve">
+    <value>Введіть назву проекту</value>
+  </data>
+  <data name="ProjectValidationMessageDescription" xml:space="preserve">
+    <value>Введіть опис проекту</value>
+  </data>
+  <data name="ProjectValidationMessageDescriptionMaxLenght" xml:space="preserve">
+    <value>Максимальна довжина 150 символів</value>
+  </data>
+  <data name="ProjectValidationMessageMaxLenght" xml:space="preserve">
+    <value>Максимальна довжина 16 символів</value>
+  </data>
+  <data name="SettingsForMenu" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="UserViewModelUser" xml:space="preserve">
+    <value>Виберіть користувача</value>
+  </data>
+  <data name="WorkflowLogIn" xml:space="preserve">
+    <value>Увійти</value>
+  </data>
+  <data name="WorkflowLogOff" xml:space="preserve">
+    <value>Вийти</value>
+  </data>
+  <data name="WorkflowMenuSettings" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="WorkflowNewProject" xml:space="preserve">
+    <value>Створити новий проект</value>
+  </data>
+  <data name="WorkflowRegister" xml:space="preserve">
+    <value>Реєстрація</value>
+  </data>
+  <data name="WorkflowSettingAccount" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="CreateQueryBody" xml:space="preserve">
+    <value>Тіло запиту:</value>
+  </data>
+  <data name="CreateQueryName" xml:space="preserve">
+    <value>Ім'я запиту:</value>
+  </data>
+  <data name="DeleteQueryQuestion" xml:space="preserve">
+    <value>Ви дійсно бажаєте видалити цей запит?</value>
+  </data>
+</root>

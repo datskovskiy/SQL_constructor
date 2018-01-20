@@ -1,0 +1,9 @@
+diff a/QuerryBuilder/Wpf/ViewModel/Command/MainWindowFormViewModel.cs b/QuerryBuilder/Wpf/ViewModel/Command/MainWindowFormViewModel.cs	(rejected hunks)
+@@ -89,6 +89,7 @@
+ 
+ 
+ 
++=======
+         public ICommand ClickAddUserInProjectCommand { get; set; }
+         #region ctor
+ >>>>>>> c02a5f93e328c3b085d11c7fb9f952d80c7f17d6

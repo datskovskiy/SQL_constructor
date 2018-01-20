@@ -1,0 +1,161 @@
+﻿@model QueryBuilderMVC.Models.ProjectViewModel
+
+<link rel="stylesheet" href="~/Content/prettify.css" />
+
+@if (Model.IdCurrentProject != 0 && Model.Queries != null)
+{
+    <div id="accordion">
+        @foreach (var item in Model.Queries)
+        {
+            if (Request.IsAuthenticated)
+            {
+                <h2 class="nameQuery" data-textquery="@item.QueryBody"><a class="link" href="ya.ru">@item.QueryName</a></h2>
+                <div>
+                    <div>
+                        @Html.ActionLink(" ", "DeleteQueryPartial", "Workflow", new { id = item.QueryID },
+                            new
+                            {
+                                @class = "DeleteQueryItem iconHeaderDeleteItem",
+                                data_dialog_title = "Delete query"
+                            })
+                    </div>
+                    <div class="">
+                        @Html.ActionLink(" ", "UpdateQueryPartial", "Workflow", new { id = item.QueryID },
+                                        new
+                                        {
+                                            @class = "UpdateQueryItem",
+                                            data_dialog_title = "Update query"
+                                        })
+                    </div>
+                    <p>@item.Description</p>
+                    <code class="prettyprint" style="white-space:pre-wrap; width:200px;" >@item.QueryBody</code>
+                    <p></p>
+                    <p style="font-size:10px;">@item.QueryDate</p>
+                </div>
+            }
+        }
+    </div>
+
+}
+       
+
+<script src="~/Scripts/prettify.js"></script>
+<script src="~/Scripts/lang-sql.js"></script>
+
+
+
+@* Scripts for accordion with openning on hoverintent *@
+<script>
+
+    $(function () {
+        $("#accordion").accordion({
+            event: "click hoverintent"
+        });
+    });
+
+    /*
+     * hoverIntent | Copyright 2011 Brian Cherne
+     * http://cherne.net/brian/resources/jquery.hoverIntent.html
+     * modified by the jQuery UI team
+     */
+    $.event.special.hoverintent = {
+        setup: function () {
+            $(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
+        },
+        teardown: function () {
+            $(this).unbind("mouseover", jQuery.event.special.hoverintent.handler);
+        },
+        handler: function (event) {
+            var currentX, currentY, timeout,
+              args = arguments,
+              target = $(event.target),
+              previousX = event.pageX,
+              previousY = event.pageY;
+
+            function track(event) {
+                currentX = event.pageX;
+                currentY = event.pageY;
+            };
+
+            function clear() {
+                target
+                  .unbind("mousemove", track)
+                  .unbind("mouseout", clear);
+                clearTimeout(timeout);
+            }
+
+            function handler() {
+                var prop,
+                  orig = event;
+
+                if ((Math.abs(previousX - currentX) +
+                    Math.abs(previousY - currentY)) < 7) {
+                    clear();
+
+                    event = $.Event("hoverintent");
+                    for (prop in orig) {
+                        if (!(prop in event)) {
+                            event[prop] = orig[prop];
+                        }
+                    }
+                    // Prevent accessing the original event since the new event
+                    // is fired asynchronously and the old event is no longer
+                    // usable (#6028)
+                    delete event.originalEvent;
+
+                    target.trigger(event);
+                } else {
+                    previousX = currentX;
+                    previousY = currentY;
+                    timeout = setTimeout(handler, 100);
+                }
+            }
+
+            timeout = setTimeout(handler, 100);
+            target.bind({
+                mousemove: track,
+                mouseout: clear
+            });
+        }
+    };
+
+
+    $(document).ready(function () {
+        $(function () {
+        	$("#first_pager").click(firstHistoryPage);
+        	$("#next_pager").click(nextHistoryPage);
+        	$("#last_pager").click(lastHistoryPage);
+        	$("#prev_pager").click(prevHistoryPage);
+        	RefreshQueryList();
+        	RefreshQueryHistoryList();
+            prettyPrint();
+
+            $(".UpdateQuery")
+                .prepend("<span class='iconHeaderEdit iconHeader portlet-3'></span>");
+
+            $(".UpdateQueryItem")
+                .prepend("<span class='iconHeaderEditItem iconHeader portlet-3'></span>");
+
+            $(".DeleteQuery")
+                .prepend("<span class='iconHeaderDelete iconHeader portlet-2'></span>");
+            $(".DeleteQueryItem")
+                .prepend("<span class='iconHeaderDeleteItem iconHeader portlet-2'></span>");
+
+
+            $(".portlet-toggle").click(function () {
+                var icon = $(this);
+                icon.toggleClass("ui-icon-minusthick ui-icon-plusthick");
+                icon.closest(".portlet").find(".portlet-content").toggle();
+            });
+        });
+
+        $.ajaxSetup({ cache: false });
+
+        ModalPostDialogDeleteWithNotifyAndUpdate(".DeleteQueryItem", '@Url.Action("DeleteQueryPartial", "Workflow")', '@Url.Action("ListQueryPartial", "Workflow")', UpdateQueryList);
+        ModalPostDialogUpdateWithNotifyAndUpdate(".UpdateQueryItem", '@Url.Action("UpdateQueryPartial", "Workflow")', '@Url.Action("ListQueryPartial", "Workflow")', UpdateQueryList);
+        ModalPostDialogUpdateWithNotifyAndUpdate(".LinkEdit", '@Url.Action("UpdateQueryPartial", "Workflow")', '@Url.Action("ListQueryPartial", "Workflow")', UpdateQueryList);
+
+
+    });
+
+</script>

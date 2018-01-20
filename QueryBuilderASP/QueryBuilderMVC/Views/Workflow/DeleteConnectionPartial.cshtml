@@ -1,0 +1,28 @@
+﻿
+@model QueryBuilderMVC.Models.ConnectionViewModel
+
+
+<h5>@Resources.Resource.DeleteConnectionQuestion</h5>
+<div>
+    <p>@Resources.Resource.CreateConnectionName @Html.DisplayFor(m => m.ConnectionName)</p>
+    <p>@Resources.Resource.CreateConnectionDatabase @Html.DisplayFor(m => m.DatabaseName)</p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <p class="TextField" style="display:none;">Name project: @Html.TextBoxFor(x => x.ConnectionID, new { placeholder = Model.ConnectionID }) </p>
+        <p class="TextField" style="display:none;">Name project: @Html.TextBoxFor(x => x.ConnectionOwner, new { placeholder = Model.ConnectionOwner }) </p>
+        <p class="TextField" style="display:none;">Name project: @Html.TextBoxFor(x => x.ServerName, new { placeholder = Model.ServerName }) </p>
+        <p class="TextField" style="display:none;">Name project: @Html.TextBoxFor(x => x.DatabaseName, new { placeholder = Model.DatabaseName }) </p>
+        <p class="TextField" style="display:none;">Name project: @Html.TextBoxFor(x => x.LoginDB, new { placeholder = Model.LoginDB }) </p>
+        <p class="TextField" style="display:none;">Name project: @Html.TextBoxFor(x => x.PasswordDB, new { placeholder = Model.PasswordDB }) </p>
+        <p class="TextField" style="display:none;">Name project: @Html.TextBoxFor(x => x.ConnectionName, new { placeholder = Model.ConnectionName }) </p>
+        @*<input type="submit" value="Delete" />*@
+    }
+</div>
+
+<script>
+        $('.ui-dialog-buttonset button').addClass("ui-button ui-corner-all ui-widget button-modal");
+        $('.ui-dialog-buttonset button').css('width', 70);
+        $('.ui-dialog-buttonset button').css('height', 30);
+</script>

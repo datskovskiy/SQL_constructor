@@ -1,0 +1,7 @@
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <title>
+    tab_cte
+  </title>
+  <rect fill="#039BE5" x="1" y="1" width="14" height="14" rx="2"/>
+  <path d="M2 6.5h1v4H2v-4zM3 10h2v1H3v-1zm0-4h2v1H3V6zm4 1h1v4H7V7zM6 6h3v1H6V6zm4 0h1v5h-1V6zm1 0h2v1h-2V6zm0 2h2v1h-2V8zm0 2h2v1h-2v-1z" fill="#FFF"/>
+</svg>

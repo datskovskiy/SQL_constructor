@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+<ul class="nav navbar-nav navbar-right lang">
+    <li class="containerLanguage">
+        @Html.ActionLink(" ", "ChangeCulture", "Home", new { lang = "en" }, new
+   {
+       @class = "IconLanguage EN",
+   })
+    </li>
+    <li class="containerLanguage">
+        @Html.ActionLink(" ", "ChangeCulture", "Home", new { lang = "de" }, new
+   {
+       @class = "IconLanguage UA",
+   })
+    </li>
+    <li class="containerLanguage">
+        @Html.ActionLink(" ", "ChangeCulture", "Home", new { lang = "ru" }, new
+   {
+       @class = "IconLanguage RU",
+   })
+    </li>
+
+
+</ul>
+
+
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm(Resources.Resource.WorkflowLogOff, "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink(Resources.Resource.LoginPartialHello+" " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li>@Html.ActionLink(Resources.Resource.WorkflowLogOff, "LogOff", "Account")</li>
+
+        @*<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>*@
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink(Resources.Resource.WorkflowRegister, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        @*<li>@Html.ActionLink(Resources.Resource.WorkflowLogIn, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+        <li>
+            @Html.ActionLink(Resources.Resource.WorkflowLogIn, "Login", "Account", routeValues: null, htmlAttributes: new
+                                  {
+                                      id = "LoginLink",
+                                      data_dialog_title = "Login"
+                                  })
+        </li>
+    </ul>
+}
+

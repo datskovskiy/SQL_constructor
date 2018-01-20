@@ -1,0 +1,9 @@
+diff a/QuerryBuilder/Wpf/Wpf.csproj b/QuerryBuilder/Wpf/Wpf.csproj	(rejected hunks)
+@@ -115,6 +115,7 @@
+     <Compile Include="DataModel\Repository\Repositories\UsersRepository.cs" />
+ <<<<<<< HEAD
+     <Compile Include="Exceptions\CustomException.cs" />
++=======
+     <Compile Include="ViewModel\AutorizationFormViewModel.cs" />
+ >>>>>>> 7625fe67f20ee263ea4db6753a2e534e2711808e
+     <Compile Include="ViewModel\MainWindowFormViewModel.cs" />

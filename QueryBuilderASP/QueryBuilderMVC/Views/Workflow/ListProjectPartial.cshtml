@@ -1,0 +1,114 @@
+﻿@model QueryBuilderMVC.Models.ProjectViewModel
+
+
+<li class="gn-icon">
+
+</li>
+
+<li class="">
+
+
+    <div id="accordion">
+
+        @foreach (var item in Model.Projects)
+        {
+            if (item.UserRole != 0)
+            {
+                <div>
+                    @if (HttpContext.Current.Request.UrlReferrer.LocalPath.ToString() == "/Workflow/List/" + @item.ProjectID)
+                    {
+                        <div style="display: inline-table; line-height:normal;">
+                            <b style="color: dodgerblue; font-size:14px; overflow:hidden; ">@item.ProjectName</b>
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="display: inline-table; line-height:normal;">
+                            <b style="font-size:14px; overflow:hidden; ">@item.ProjectName</b>
+                        </div>
+                    }
+                    @if (Request.IsAuthenticated)
+                    {
+                        <div class="IconMenu" title="@Resources.Resource.TooltipDeleteProject" >
+                            @Html.ActionLink(" ", "DeleteProjectPartial", "Workflow",
+                            new
+                            {
+                                id = item.ProjectID
+                            },
+                            new
+                            {
+                                @class = "viewDialog IconDelete IconModalDelete",
+                                @id = "IconDelete",
+                                data_dialog_title = "Delete project"
+                            })
+                        </div>
+                        <div class="IconMenu" title="@Resources.Resource.TooltipEditProject">
+                            @Html.ActionLink(" ", "UpdateProjectPartial", "Workflow", new { id = item.ProjectID },
+                            new
+                            {
+                                @class = "viewDialog IconEdit IconModalEdit",
+                                @id = "IconEdit",
+                                data_dialog_title = "Edit project"
+                            })
+                        </div>
+
+                        if ((item.UserRole == 2) && (item.CountUsersForShared > 0))
+                        {
+                            <div class="IconMenu" title="@Resources.Resource.TooltipInviteProject">
+                                @Html.ActionLink(" ", "InviteUserToProjectPartial", "Workflow", new { id = item.ProjectID },
+                                 new
+                                 {
+                                     @class = "viewDialog IconInviteUser IconModalInvite",
+                                     @id = "IconInviteUser",
+                                     data_dialog_title = "Invite user to project"
+                                 })
+                            </div>
+                        }
+                        <div class="IconMenu CurrentProj">
+                            <p onclick="return location.href = '/Workflow/List/@item.ProjectID'" title="@Resources.Resource.TooltipCurrentProject">C</p>
+                        </div>
+                    }
+
+                </div>
+                <div>
+
+                    <i style="font-size:12px; line-height:normal;">@item.ProjectDescription</i>
+                   
+                </div>
+
+
+
+            }
+
+
+
+
+        }
+
+    </div>
+</li>
+
+
+
+<script>
+    $(function () {
+        $("#accordion").accordion({
+            heightStyle: "content"
+        });
+    });
+
+    $(document).ready(function () {
+
+        $.ajaxSetup({ cache: false });
+
+        ModalPostDialogDeleteWithNotifyAndUpdate(".IconModalDelete", '@Url.Action("DeleteProjectPartial", "Workflow")', '@Url.Action("ListProjectPartial", "Workflow")', UpdateProjectList);
+        ModalPostDialogUpdateWithNotifyAndUpdate(".IconModalEdit", '@Url.Action("UpdateProjectPartial", "Workflow")', '@Url.Action("ListProjectPartial", "Workflow")', UpdateProjectList);
+        ModalPostDialogInviteWithNotifyAndUpdate(".IconModalInvite", '@Url.Action("InviteUserToProjectPartial", "Workflow")', '@Url.Action("ListProjectPartial", "Workflow")', UpdateProjectList);
+
+        $(".close").on("click", function (e) {
+            e.preventDefault();
+            $(this).closest(".dialog").dialog("close");
+        });
+    });
+
+</script>

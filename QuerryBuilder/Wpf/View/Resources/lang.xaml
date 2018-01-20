@@ -1,0 +1,92 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+
+    <!--Common -->
+    <v:String x:Key="MMenuLanguage">Choose language</v:String>
+    <v:String x:Key="English">English</v:String>
+    <v:String x:Key="Russian">Русский</v:String>
+    <!--Common -->
+
+
+    <!--Autorization Window -->
+    <v:String x:Key="UserLogin">E-mail</v:String>
+    <v:String x:Key="LogIn">Sign in</v:String>
+    <v:String x:Key="Close">Close</v:String>
+    <v:String x:Key="UserPassword"> Password </v:String>
+    <v:String x:Key="AutorizationWindowTitle">Autorization</v:String>
+    <!--Autorization Window -->
+
+    <!--RegistrationWindow -->
+    <v:String x:Key="UserFName">First name</v:String>
+    <v:String x:Key="UserLName">Last name</v:String>
+    <v:String x:Key="Email">E-mail:</v:String>
+    <v:String x:Key="MailTitle">title:</v:String> <!-- Тема сообщения письма при отправки запроса-->
+    <v:String x:Key="UserConfirmPassword">Confirm password</v:String>
+    <v:String x:Key="RegistrationWindowTitle">Registration</v:String>
+    <v:String x:Key="RegisterButton">Register me</v:String>
+    <!--RegistrationWindow -->
+
+    <v:String x:Key="SendQuerryToEmail">Send querry</v:String>
+    <v:String x:Key="SendEmail">Send querry to email</v:String>
+    <v:String x:Key="InviteUserToProject">Invite a user to the project</v:String>
+    <v:String x:Key="SendInvite">Send invite to email</v:String>
+    <!--ConnectionDbWindow -->
+    <v:String x:Key="Server">Server:</v:String>
+    <v:String x:Key="Database">Database:</v:String>
+    <v:String x:Key="User">User:</v:String>
+    <v:String x:Key="Password">Password:</v:String>
+    <v:String x:Key="ConnectionDbWindowTitle">Connection settings</v:String>
+    <v:String x:Key="Test">Test connection</v:String>
+    <v:String x:Key="AddConnect">Add connection</v:String>
+    <v:String x:Key="WindowsAutorizatedCheckBox">Windows autorizated</v:String>
+    <!--ConnectionDbWindow -->
+
+    <!--CreateProjectWindow -->
+    <v:String x:Key="CreateProjectTitle">Create New Project</v:String>
+    <v:String x:Key="NameProject">Project name:</v:String>
+    <v:String x:Key="SummaryProject">Summary project:</v:String>
+    <v:String x:Key="CreateNewConnection">New connection</v:String>
+    <v:String x:Key="YourConnections">Choose connections:</v:String>
+    <v:String x:Key="CreateProject">Create project</v:String>
+    <!--CreateProjectWindow -->
+
+
+
+
+
+
+    <!--MainWindow -->
+
+        <!--MainMenu -->
+    <v:String x:Key="File">File</v:String>
+    <v:String x:Key="CreateNewProject">Create project...</v:String>    
+    <v:String x:Key="OpenProject">Open project...</v:String>
+        <v:String x:Key="SaveProject">Save project...</v:String>
+        <v:String x:Key="SignIn">Sign in...</v:String>
+    <v:String x:Key="LogOut">Log out</v:String>
+    <v:String x:Key="LogOutUser">Log out</v:String>
+        <v:String x:Key="Exit">Exit</v:String>
+        <v:String x:Key="AddMenu">Add...</v:String>
+            <v:String x:Key="AddConnection">Connection...</v:String>
+        <v:String x:Key="CloseProject">Close project</v:String>
+    <v:String x:Key="Edit">Edit</v:String>
+    <v:String x:Key="View">View</v:String>
+    <v:String x:Key="Projects">Project</v:String>
+    <!--MainMenu -->
+    <v:String x:Key="SaveResultToPdf">Save results querry to PDF file</v:String>
+    <v:String x:Key="SaveResultToExcel">Save results querry to Excel file</v:String>
+    <v:String x:Key="SaveQuerryToTxt">Save querry to txt file</v:String>
+    <v:String x:Key="SendQuerryToMail">Send text querry to e-mail</v:String>
+    <v:String x:Key="RefreshQuerry">Refresh querry</v:String>
+    <v:String x:Key="RunQuerry">Run querry</v:String>
+    <v:String x:Key="AddNewUsers">Users in project...</v:String>
+    <v:String x:Key="AddNewUsersToolTip">Sharing your project other user from email</v:String>
+    <v:String x:Key="BuildErModel">Build ER-model</v:String>
+    <v:String x:Key="NotUserText">Not user</v:String>
+    <v:String x:Key="BuildErModelToolTip">Build ER-model from database in new window</v:String>
+    <!--MainWindow -->
+   
+    
+</ResourceDictionary>
+                   

@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+
+    <!--  Common  -->
+    <v:String x:Key="MMenuLanguage">Choose language</v:String>
+    <v:String x:Key="English">English</v:String>
+    <v:String x:Key="Russian">Русский</v:String>
+    <!--  Common  -->
+
+
+    <!--  Autorization Window  -->
+    <v:String x:Key="UserLogin">Your E-mail</v:String>
+    <v:String x:Key="LogIn">Sign in</v:String>
+    <v:String x:Key="Close">Close</v:String>
+    <v:String x:Key="UserPassword">Your password</v:String>
+    <v:String x:Key="AutorizationWindowTitle">Autorization</v:String>
+    <!--  Autorization Window  -->
+
+    <!--  RegistrationWindow  -->
+    <!--  RegistrationWindow  -->
+
+
+    <!--  MainWindow  -->
+    <!--  MainWindow  -->
+
+</ResourceDictionary>

@@ -1,0 +1,10 @@
+﻿
+<h2>@ViewBag.Title</h2>
+<script>
+    $(document).ready(function () {
+        $(".ui-button-text").hide();
+        setTimeout(function() {
+              window.location.href = "@Url.Action("List", "Workflow", new { id = ViewBag.IdCurrentProject })";
+        }, 2000);
+    })
+</script>

@@ -1,0 +1,19 @@
+﻿@using (Html.BeginForm(null, null, FormMethod.Post, new {id="emailResultQueryForm"}))
+{
+    @Html.ValidationSummary();
+
+    <div>
+        @Html.Label("E-mail:")
+        <div>
+            <input type="email" name="email" required="required"/>
+        </div>
+    </div>
+
+    <input type="submit"/>
+}
+
+@*<script>
+        $('.ui-dialog-buttonset button').addClass("ui-button ui-corner-all ui-widget button-modal");
+        $('.ui-dialog-buttonset button').css('width', 70);
+        $('.ui-dialog-buttonset button').css('height', 30);
+</script>*@

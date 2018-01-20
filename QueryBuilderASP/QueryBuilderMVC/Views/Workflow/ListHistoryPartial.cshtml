@@ -1,0 +1,68 @@
+﻿@model QueryBuilderMVC.Models.ProjectViewModel
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Converters
+
+@if (Request.IsAuthenticated && Model.IdCurrentProject != 0 && Model.QueryHistory != null)
+{
+	<div id="HistoryWrapper">
+
+	</div>
+
+	<div id="pager" class="ui-state-default ui-jqgrid-pager ui-corner-bottom" dir="ltr">
+		<div id="pg_pager" class="ui-pager-control" role="group">
+			<table cellspacing="0" cellpadding="0" border="0" class="ui-pg-table" style="table-layout:fixed;" role="row">
+				<tbody>
+					<tr>
+						<td id="pager_center" align="center" style="width: 260px;">
+							<table cellspacing="0" cellpadding="0" border="0" style="table-layout:auto;" class="ui-pg-table">
+								<tbody>
+									<tr>
+										<td id="first_pager" class="ui-pg-button ui-corner-all ui-state-disabled" style="cursor: pointer;">
+											<span class="ui-icon ui-icon-seek-first"></span>
+										</td>
+										<td id="prev_pager" class="ui-pg-button ui-corner-all ui-state-disabled" style="cursor: pointer;">
+											<span class="ui-icon ui-icon-seek-prev"></span>
+										</td>
+										<td class="ui-pg-button ui-state-disabled" style="width:4px;">
+											<span class="ui-separator"></span>
+										</td>
+										<td dir="ltr">
+											Page
+											<span id="currentPage">2</span>
+											of
+											<span id="pageСount"></span>
+										</td>
+										<td class="ui-pg-button ui-state-disabled" style="width:4px;">
+											<span class="ui-separator"></span>
+										</td>
+										<td id="next_pager" class="ui-pg-button ui-corner-all" style="cursor: pointer;"><span class="ui-icon ui-icon-seek-next"></span></td>
+										<td id="last_pager" class="ui-pg-button ui-corner-all" style="cursor: pointer;"><span class="ui-icon ui-icon-seek-end"></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript">
+	var QueryHistory = @Html.Raw(JsonConvert.SerializeObject(Model.QueryHistory, Formatting.None, new IsoDateTimeConverter() { DateTimeFormat = "M/dd/yyyy HH:mm" }));
+	QueryHistory.reverse();
+	QueryHistory.QuantityOnPage = 5;
+	QueryHistory.PageCount = QueryHistory.length / QueryHistory.QuantityOnPage << 0;
+	QueryHistory.CurrentPage = 1;
+	$("#pageСount").append(QueryHistory.PageCount);
+
+
+
+	$(window).ready(function(){
+	    changeHistoryPage(1);
+	    RefreshQueryList();
+	    RefreshQueryHistoryList();
+	});
+
+
+	</script>
+}
+

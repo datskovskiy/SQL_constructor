@@ -1,0 +1,7 @@
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <title>
+    add-table
+  </title>
+  <path d="M2.556 1C1.692 1 1 1.7 1 2.556v10.888C1 14.3 1.692 15 2.556 15h10.888C14.3 15 15 14.3 15 13.444V2.556C15 1.7 14.3 1 13.444 1H2.556z" fill="#039BE5"/>
+  <path d="M12 9H9v3H7V9H4V7h3V4h2v3h3v2z" fill="#FFF"/>
+</svg>
